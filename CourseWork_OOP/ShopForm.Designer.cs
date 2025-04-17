@@ -43,6 +43,8 @@
             panel2 = new Panel();
             panel3 = new Panel();
             textBoxModel = new TextBox();
+            label4 = new Label();
+            label5 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -53,9 +55,9 @@
             flowLayoutPanelContent.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanelContent.BackColor = Color.FromArgb(33, 11, 97);
             flowLayoutPanelContent.BorderStyle = BorderStyle.FixedSingle;
-            flowLayoutPanelContent.Location = new Point(0, 110);
+            flowLayoutPanelContent.Location = new Point(0, 121);
             flowLayoutPanelContent.Name = "flowLayoutPanelContent";
-            flowLayoutPanelContent.Size = new Size(758, 341);
+            flowLayoutPanelContent.Size = new Size(758, 330);
             flowLayoutPanelContent.TabIndex = 9;
             // 
             // label3
@@ -64,7 +66,7 @@
             label3.AutoSize = true;
             label3.Cursor = Cursors.Hand;
             label3.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(727, 8);
+            label3.Location = new Point(730, 1);
             label3.Name = "label3";
             label3.Size = new Size(28, 29);
             label3.TabIndex = 14;
@@ -83,9 +85,9 @@
             // 
             // textBoxMake
             // 
-            textBoxMake.Location = new Point(8, 37);
+            textBoxMake.Location = new Point(3, 51);
             textBoxMake.Name = "textBoxMake";
-            textBoxMake.Size = new Size(105, 23);
+            textBoxMake.Size = new Size(168, 23);
             textBoxMake.TabIndex = 10;
             // 
             // textBoxTo
@@ -111,7 +113,7 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(textBoxTo);
             panel1.Controls.Add(textBoxFrom);
-            panel1.Location = new Point(501, 3);
+            panel1.Location = new Point(526, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(205, 71);
             panel1.TabIndex = 12;
@@ -138,7 +140,7 @@
             // 
             // buttonClearSearchSettings
             // 
-            buttonClearSearchSettings.Location = new Point(8, 66);
+            buttonClearSearchSettings.Location = new Point(89, 6);
             buttonClearSearchSettings.Name = "buttonClearSearchSettings";
             buttonClearSearchSettings.Size = new Size(140, 23);
             buttonClearSearchSettings.TabIndex = 13;
@@ -148,11 +150,11 @@
             // 
             // buttonSell
             // 
-            buttonSell.Location = new Point(412, 3);
+            buttonSell.Location = new Point(423, 2);
             buttonSell.Name = "buttonSell";
             buttonSell.Size = new Size(75, 23);
             buttonSell.TabIndex = 15;
-            buttonSell.Text = "Sell";
+            buttonSell.Text = "UnLogin";
             buttonSell.UseVisualStyleBackColor = true;
             buttonSell.Click += buttonSell_Click;
             // 
@@ -163,29 +165,49 @@
             panel2.Controls.Add(panel3);
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(758, 111);
+            panel2.Size = new Size(758, 125);
             panel2.TabIndex = 16;
             // 
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(224, 224, 224);
+            panel3.Controls.Add(label5);
+            panel3.Controls.Add(label4);
             panel3.Controls.Add(textBoxModel);
             panel3.Controls.Add(buttonSell);
             panel3.Controls.Add(textBoxMake);
             panel3.Controls.Add(panel1);
             panel3.Controls.Add(buttonClearSearchSettings);
             panel3.Controls.Add(buttonSearch);
-            panel3.Location = new Point(12, 12);
+            panel3.Location = new Point(12, 30);
             panel3.Name = "panel3";
-            panel3.Size = new Size(709, 92);
+            panel3.Size = new Size(734, 92);
             panel3.TabIndex = 16;
             // 
             // textBoxModel
             // 
-            textBoxModel.Location = new Point(119, 37);
+            textBoxModel.Location = new Point(177, 51);
             textBoxModel.Name = "textBoxModel";
-            textBoxModel.Size = new Size(111, 23);
+            textBoxModel.Size = new Size(172, 23);
             textBoxModel.TabIndex = 16;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(0, 35);
+            label4.Name = "label4";
+            label4.Size = new Size(36, 15);
+            label4.TabIndex = 17;
+            label4.Text = "Make";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(177, 35);
+            label5.Name = "label5";
+            label5.Size = new Size(41, 15);
+            label5.TabIndex = 18;
+            label5.Text = "Model";
             // 
             // ShopForm
             // 
@@ -225,5 +247,7 @@
         private Panel panel2;
         private Panel panel3;
         private TextBox textBoxModel;
+        private Label label5;
+        private Label label4;
     }
 }

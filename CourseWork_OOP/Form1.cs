@@ -61,7 +61,6 @@ namespace CourseWork_OOP
                     return;
                 }
             }
-            //popa
             //3232323
             MessageBox.Show("Entry incorrect");
         }

@@ -20,6 +20,7 @@ namespace CourseWork_OOP
         public CarPage(BaseCar car, ShopForm shopForm)
         {
             InitializeComponent();
+            this.CenterToScreen();
             this.car = car;
             LoadCarDetails();
             this.shopForm = shopForm;
@@ -27,57 +28,19 @@ namespace CourseWork_OOP
 
         private void LoadCarDetails()
         {
-            Label lblMake = new Label
-            {
-                Text = $"Make: {car.Make}",
-                AutoSize = true,
-                Location = new Point(20, 20)
-            };
-            Label lblModel = new Label
-            {
-                Text = $"Model: {car.Model}",
-                AutoSize = true,
-                Location = new Point(20, 50)
-            };
-            Label lblYear = new Label
-            {
-                Text = $"Year: {car.Year}",
-                AutoSize = true,
-                Location = new Point(20, 80)
-            };
-            Label lblColor = new Label
-            {
-                Text = $"Color: {car.Color}",
-                AutoSize = true,
-                Location = new Point(20, 110)
-            };
-            Label lblPrice = new Label
-            {
-                Text = $"Price: {car.Price}",
-                AutoSize = true,
-                Location = new Point(20, 140)
-            };
-            PictureBox pictureBox = new PictureBox
-            {
-                Image = car.Image,
-                Location = new Point(250, 20),
-                SizeMode = PictureBoxSizeMode.Zoom,
-                Size = new Size(300, 200)
-            };
-            Label lblDescription = new Label
-            {
-                Text = $"{car.Description}",
-                AutoSize = true,
-                Location = new Point(20, 160)
-            };
+            string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, car.ImagePath);
 
-            Controls.Add(lblMake);
-            Controls.Add(lblModel);
-            Controls.Add(lblYear);
-            Controls.Add(lblColor);
-            Controls.Add(lblPrice);
-            Controls.Add(pictureBox);
-            Controls.Add(lblDescription);
+            labelColor.Text = "Color:" + car.Color.ToString();
+            labelMake.Text = "Make:" + car.Make.ToString();
+            labelModel.Text = "Model:" + car.Model.ToString();
+            labelYear.Text = "Year:" + car.Year.ToString();
+            labelPrice.Text = "Price:" + car.Price.ToString();
+            labelCountry.Text = "Country:" + car.Country.ToString();
+            labelCondition.Text = "Condition:" + car.Condition.ToString();
+            labelDescription.Text = car.Description.ToString();
+
+            pictureBoxImage.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxImage.Image = File.Exists(imagePath) ? Image.FromFile(imagePath) : null;
         }
 
         private void CarPage_Load(object sender, EventArgs e)
@@ -88,7 +51,12 @@ namespace CourseWork_OOP
         private void label1_Click(object sender, EventArgs e)
         {
             this.Close();
+            shopForm.Show();
         }
 
+        private void buttonBuy_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

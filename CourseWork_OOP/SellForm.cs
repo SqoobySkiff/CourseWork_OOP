@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -15,15 +16,24 @@ namespace CourseWork_OOP
 
         private string jsonFilePath;
         private string imagePath;
+        private Random rnd;
+        private List<int> IDIES;
+        private int ID = 0;
 
         private string imageFolderPath = @"images";
 
-        public SellForm(string jsonFilePath)
+        public SellForm(string jsonFilePath, List<int> IDIES)
         {
             InitializeComponent();
             InitializeDragDrop();
-            //mainForm = shopForm;
             this.jsonFilePath = jsonFilePath;
+            this.IDIES = IDIES;
+            this.rnd = new Random(); 
+
+            comboBoxCondition.Items.Add("New");
+            comboBoxCondition.Items.Add("Used");
+            comboBoxCountry.Items.Add("Homemade");
+            comboBoxCountry.Items.Add("Foregin");
         }
 
         private void InitializeDragDrop()
@@ -101,6 +111,12 @@ namespace CourseWork_OOP
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(comboBoxCondition.Text) || string.IsNullOrWhiteSpace(comboBoxCountry.Text))
+            {
+                MessageBox.Show("Please select both Condition and Country options.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (string.IsNullOrEmpty(imagePath))
             {
                 MessageBox.Show("Add photo of car", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -112,11 +128,14 @@ namespace CourseWork_OOP
             {
                 newCar = new LightCars
                 {
+                    ID = SetID(),
                     Make = textBoxMake.Text,
                     Model = textBoxModel.Text,
                     Year = int.Parse(textBoxYear.Text),
                     Color = textBoxColor.Text,
                     Price = decimal.Parse(textBoxPrice.Text),
+                    Condition = comboBoxCondition.Text,
+                    Country = comboBoxCountry.Text,
                     ImagePath = imagePath,
                     Description = textBoxDescription.Text
                 };
@@ -125,11 +144,14 @@ namespace CourseWork_OOP
             {
                 newCar = new SUV
                 {
+                    ID = SetID(),
                     Make = textBoxMake.Text,
                     Model = textBoxModel.Text,
                     Year = int.Parse(textBoxYear.Text),
                     Color = textBoxColor.Text,
                     Price = decimal.Parse(textBoxPrice.Text),
+                    Condition = comboBoxCondition.Text,
+                    Country = comboBoxCountry.Text,
                     ImagePath = imagePath,
                     Description = textBoxDescription.Text
                 };
@@ -155,6 +177,20 @@ namespace CourseWork_OOP
                 this.Close();
             }
 
+        }
+
+        private int SetID()
+        {
+            HashSet<int> idSet = new HashSet<int>(IDIES); 
+
+            int newId;
+            do
+            {
+                newId = rnd.Next(1, 100000); 
+            } while (idSet.Contains(newId));
+
+            IDIES.Add(newId); 
+            return newId;
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {

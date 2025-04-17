@@ -48,6 +48,10 @@
             label3 = new Label();
             label2 = new Label();
             panel3 = new Panel();
+            comboBoxCountry = new ComboBox();
+            comboBoxCondition = new ComboBox();
+            label9 = new Label();
+            label10 = new Label();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -141,7 +145,7 @@
             // 
             textBoxDescription.BackColor = Color.FromArgb(224, 224, 224);
             textBoxDescription.BorderStyle = BorderStyle.None;
-            textBoxDescription.Location = new Point(3, 218);
+            textBoxDescription.Location = new Point(3, 265);
             textBoxDescription.Multiline = true;
             textBoxDescription.Name = "textBoxDescription";
             textBoxDescription.Size = new Size(496, 91);
@@ -161,6 +165,10 @@
             // panel2
             // 
             panel2.AllowDrop = true;
+            panel2.Controls.Add(label10);
+            panel2.Controls.Add(label9);
+            panel2.Controls.Add(comboBoxCondition);
+            panel2.Controls.Add(comboBoxCountry);
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(label7);
@@ -175,9 +183,9 @@
             panel2.Controls.Add(textBoxDescription);
             panel2.Controls.Add(textBoxColor);
             panel2.Controls.Add(textBoxPrice);
-            panel2.Location = new Point(12, 121);
+            panel2.Location = new Point(12, 70);
             panel2.Name = "panel2";
-            panel2.Size = new Size(558, 313);
+            panel2.Size = new Size(558, 364);
             panel2.TabIndex = 11;
             // 
             // pictureBox1
@@ -206,7 +214,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = SystemColors.ControlDark;
-            label7.Location = new Point(167, 186);
+            label7.Location = new Point(166, 233);
             label7.Name = "label7";
             label7.Size = new Size(178, 29);
             label7.TabIndex = 14;
@@ -277,6 +285,44 @@
             panel3.Size = new Size(200, 152);
             panel3.TabIndex = 12;
             // 
+            // comboBoxCountry
+            // 
+            comboBoxCountry.FormattingEnabled = true;
+            comboBoxCountry.Location = new Point(3, 196);
+            comboBoxCountry.Name = "comboBoxCountry";
+            comboBoxCountry.Size = new Size(121, 23);
+            comboBoxCountry.TabIndex = 18;
+            // 
+            // comboBoxCondition
+            // 
+            comboBoxCondition.FormattingEnabled = true;
+            comboBoxCondition.Location = new Point(378, 196);
+            comboBoxCondition.Name = "comboBoxCondition";
+            comboBoxCondition.Size = new Size(121, 23);
+            comboBoxCondition.TabIndex = 19;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = SystemColors.ControlDark;
+            label9.Location = new Point(3, 164);
+            label9.Name = "label9";
+            label9.Size = new Size(118, 29);
+            label9.TabIndex = 20;
+            label9.Text = "Country";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.ForeColor = SystemColors.ControlDark;
+            label10.Location = new Point(372, 164);
+            label10.Name = "label10";
+            label10.Size = new Size(148, 29);
+            label10.TabIndex = 21;
+            label10.Text = "Condition";
+            // 
             // SellForm
             // 
             AllowDrop = true;
@@ -320,5 +366,9 @@
         private Panel panel3;
         private Label label8;
         private PictureBox pictureBox1;
+        private Label label10;
+        private Label label9;
+        private ComboBox comboBoxCondition;
+        private ComboBox comboBoxCountry;
     }
 }

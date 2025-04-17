@@ -25,6 +25,7 @@ namespace CourseWork_OOP
         }
         private void InitializeForm()
         {
+            this.CenterToScreen();
             flowLayoutPanelContent.AutoScroll = true;
             if (!File.Exists(jsonFilePath))
             {
@@ -82,7 +83,7 @@ namespace CourseWork_OOP
             Panel carPanel = new Panel
             {
                 Width = 600,
-                Height = 100,
+                Height = 111,
                 BorderStyle = BorderStyle.FixedSingle,
                 Margin = new Padding(10),
                 BackColor = Color.White,
@@ -112,17 +113,30 @@ namespace CourseWork_OOP
                 AutoSize = true,
                 Location = new Point(10, 70)
             };
+            Label lblCountry = new Label
+            {
+                Text = $"Country: {car.Country}",
+                AutoSize = true,
+                Location = new Point(10, 90)
+            };
+            Label lblCondition = new Label
+            {
+                Text = $"Condition: {car.Condition}",
+                AutoSize = true,
+                Location = new Point(145, 90)
+            };
+
             Label lblPrice = new Label
             {
                 Text = $"Price: {car.Price}",
                 AutoSize = true,
-                Location = new Point(520, 80)
+                Location = new Point(520, 90)
             };
             string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, car.ImagePath);
             PictureBox pictureBox = new PictureBox
             {
                 Image = File.Exists(imagePath) ? Image.FromFile(imagePath) : null,
-                Location = new Point(250, 0),
+                Location = new Point(250, 5),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 Size = new Size(200, 100)
             };
@@ -142,6 +156,8 @@ namespace CourseWork_OOP
             carPanel.Controls.Add(lblPrice);
             carPanel.Controls.Add(pictureBox);
             carPanel.Controls.Add(btnDetails);
+            carPanel.Controls.Add(lblCountry);
+            carPanel.Controls.Add(lblCondition);
 
             flowLayoutPanelContent.Controls.Add(carPanel);
         }
@@ -183,6 +199,10 @@ namespace CourseWork_OOP
         private void buttonClearSearchSettings_Click_1(object sender, EventArgs e)
         {
             UpdateCarVisual(allCars);
+            textBoxFrom.Text = "";
+            textBoxTo.Text = "";
+            textBoxMake.Text = "";
+            textBoxModel.Text = "";
         }
 
         public bool FindByPriceMath(BaseCar car, int from, int to)
@@ -192,6 +212,7 @@ namespace CourseWork_OOP
 
         private void OpenCarPage(BaseCar car)
         {
+            this.Hide();
             CarPage carPage = new CarPage(car, this);
             carPage.Show();
         }
@@ -203,7 +224,8 @@ namespace CourseWork_OOP
 
         private void buttonSell_Click(object sender, EventArgs e)
         {
-            SellForm form = new SellForm(jsonFilePath);
+            this.Close();
+            Form1 form = new Form1();
             form.Show();
         }
 
