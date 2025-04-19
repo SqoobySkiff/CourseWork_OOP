@@ -34,6 +34,10 @@ namespace CourseWork_OOP
             comboBoxCondition.Items.Add("Used");
             comboBoxCountry.Items.Add("Homemade");
             comboBoxCountry.Items.Add("Foregin");
+
+            comboBoxGear.Items.Add("Automatic");
+            comboBoxGear.Items.Add("Manual");
+            comboBoxGear.Items.Add("HalfAuto");
         }
 
         private void InitializeDragDrop()
@@ -105,13 +109,17 @@ namespace CourseWork_OOP
                 string.IsNullOrWhiteSpace(textBoxYear.Text) ||
                 string.IsNullOrWhiteSpace(textBoxColor.Text) ||
                 string.IsNullOrWhiteSpace(textBoxPrice.Text) ||
-                string.IsNullOrWhiteSpace(textBoxDescription.Text))
+                string.IsNullOrWhiteSpace(textBoxDescription.Text) ||
+                string.IsNullOrWhiteSpace(textBoxHP.Text)
+                ) 
+
             {
                 MessageBox.Show("All fields should contains info", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(comboBoxCondition.Text) || string.IsNullOrWhiteSpace(comboBoxCountry.Text))
+            if (string.IsNullOrWhiteSpace(comboBoxCondition.Text) || string.IsNullOrWhiteSpace(comboBoxCountry.Text) 
+                || string.IsNullOrWhiteSpace(comboBoxGear.Text))
             {
                 MessageBox.Show("Please select both Condition and Country options.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -132,6 +140,8 @@ namespace CourseWork_OOP
                     Make = textBoxMake.Text,
                     Model = textBoxModel.Text,
                     Year = int.Parse(textBoxYear.Text),
+                    HP = int.Parse(textBoxHP.Text),
+                    Gear = comboBoxGear.Text,
                     Color = textBoxColor.Text,
                     Price = decimal.Parse(textBoxPrice.Text),
                     Condition = comboBoxCondition.Text,
@@ -148,6 +158,8 @@ namespace CourseWork_OOP
                     Make = textBoxMake.Text,
                     Model = textBoxModel.Text,
                     Year = int.Parse(textBoxYear.Text),
+                    HP = int.Parse(textBoxHP.Text),
+                    Gear = comboBoxGear.Text,
                     Color = textBoxColor.Text,
                     Price = decimal.Parse(textBoxPrice.Text),
                     Condition = comboBoxCondition.Text,

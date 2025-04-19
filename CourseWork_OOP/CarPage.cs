@@ -31,6 +31,8 @@ namespace CourseWork_OOP
             string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, car.ImagePath);
 
             labelColor.Text = "Color:" + car.Color.ToString();
+            labelHP.Text = "HP:" + car.HP.ToString();
+            labelGear.Text = "Gear:" + car.Gear.ToString();
             labelMake.Text = "Make:" + car.Make.ToString();
             labelModel.Text = "Model:" + car.Model.ToString();
             labelYear.Text = "Year:" + car.Year.ToString();

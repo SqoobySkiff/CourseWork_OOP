@@ -39,6 +39,10 @@
             textBoxDescription = new TextBox();
             label1 = new Label();
             panel2 = new Panel();
+            label10 = new Label();
+            label9 = new Label();
+            comboBoxCondition = new ComboBox();
+            comboBoxCountry = new ComboBox();
             pictureBox1 = new PictureBox();
             label8 = new Label();
             label7 = new Label();
@@ -48,10 +52,10 @@
             label3 = new Label();
             label2 = new Label();
             panel3 = new Panel();
-            comboBoxCountry = new ComboBox();
-            comboBoxCondition = new ComboBox();
-            label9 = new Label();
-            label10 = new Label();
+            textBoxHP = new TextBox();
+            label11 = new Label();
+            label12 = new Label();
+            comboBoxGear = new ComboBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -165,6 +169,10 @@
             // panel2
             // 
             panel2.AllowDrop = true;
+            panel2.Controls.Add(label12);
+            panel2.Controls.Add(comboBoxGear);
+            panel2.Controls.Add(label11);
+            panel2.Controls.Add(textBoxHP);
             panel2.Controls.Add(label10);
             panel2.Controls.Add(label9);
             panel2.Controls.Add(comboBoxCondition);
@@ -185,13 +193,51 @@
             panel2.Controls.Add(textBoxPrice);
             panel2.Location = new Point(12, 70);
             panel2.Name = "panel2";
-            panel2.Size = new Size(558, 364);
+            panel2.Size = new Size(570, 364);
             panel2.TabIndex = 11;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.ForeColor = SystemColors.ControlDark;
+            label10.Location = new Point(407, 164);
+            label10.Name = "label10";
+            label10.Size = new Size(148, 29);
+            label10.TabIndex = 21;
+            label10.Text = "Condition";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = SystemColors.ControlDark;
+            label9.Location = new Point(3, 164);
+            label9.Name = "label9";
+            label9.Size = new Size(118, 29);
+            label9.TabIndex = 20;
+            label9.Text = "Country";
+            // 
+            // comboBoxCondition
+            // 
+            comboBoxCondition.FormattingEnabled = true;
+            comboBoxCondition.Location = new Point(424, 196);
+            comboBoxCondition.Name = "comboBoxCondition";
+            comboBoxCondition.Size = new Size(121, 23);
+            comboBoxCondition.TabIndex = 19;
+            // 
+            // comboBoxCountry
+            // 
+            comboBoxCountry.FormattingEnabled = true;
+            comboBoxCountry.Location = new Point(3, 196);
+            comboBoxCountry.Name = "comboBoxCountry";
+            comboBoxCountry.Size = new Size(121, 23);
+            comboBoxCountry.TabIndex = 18;
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Silver;
-            pictureBox1.Location = new Point(328, 40);
+            pictureBox1.Location = new Point(363, 40);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(192, 97);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -203,7 +249,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = SystemColors.ControlDark;
-            label8.Location = new Point(317, 8);
+            label8.Location = new Point(332, 8);
             label8.Name = "label8";
             label8.Size = new Size(238, 29);
             label8.TabIndex = 16;
@@ -285,43 +331,44 @@
             panel3.Size = new Size(200, 152);
             panel3.TabIndex = 12;
             // 
-            // comboBoxCountry
+            // textBoxHP
             // 
-            comboBoxCountry.FormattingEnabled = true;
-            comboBoxCountry.Location = new Point(3, 196);
-            comboBoxCountry.Name = "comboBoxCountry";
-            comboBoxCountry.Size = new Size(121, 23);
-            comboBoxCountry.TabIndex = 18;
+            textBoxHP.BackColor = Color.FromArgb(224, 224, 224);
+            textBoxHP.BorderStyle = BorderStyle.None;
+            textBoxHP.Location = new Point(145, 199);
+            textBoxHP.Name = "textBoxHP";
+            textBoxHP.Size = new Size(100, 16);
+            textBoxHP.TabIndex = 22;
             // 
-            // comboBoxCondition
+            // label11
             // 
-            comboBoxCondition.FormattingEnabled = true;
-            comboBoxCondition.Location = new Point(378, 196);
-            comboBoxCondition.Name = "comboBoxCondition";
-            comboBoxCondition.Size = new Size(121, 23);
-            comboBoxCondition.TabIndex = 19;
+            label11.AutoSize = true;
+            label11.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.ForeColor = SystemColors.ControlDark;
+            label11.Location = new Point(145, 167);
+            label11.Name = "label11";
+            label11.Size = new Size(43, 29);
+            label11.TabIndex = 23;
+            label11.Text = "HP";
             // 
-            // label9
+            // label12
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = SystemColors.ControlDark;
-            label9.Location = new Point(3, 164);
-            label9.Name = "label9";
-            label9.Size = new Size(118, 29);
-            label9.TabIndex = 20;
-            label9.Text = "Country";
+            label12.AutoSize = true;
+            label12.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = SystemColors.ControlDark;
+            label12.Location = new Point(293, 164);
+            label12.Name = "label12";
+            label12.Size = new Size(73, 29);
+            label12.TabIndex = 25;
+            label12.Text = "Gear";
             // 
-            // label10
+            // comboBoxGear
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.ForeColor = SystemColors.ControlDark;
-            label10.Location = new Point(372, 164);
-            label10.Name = "label10";
-            label10.Size = new Size(148, 29);
-            label10.TabIndex = 21;
-            label10.Text = "Condition";
+            comboBoxGear.FormattingEnabled = true;
+            comboBoxGear.Location = new Point(270, 196);
+            comboBoxGear.Name = "comboBoxGear";
+            comboBoxGear.Size = new Size(121, 23);
+            comboBoxGear.TabIndex = 24;
             // 
             // SellForm
             // 
@@ -370,5 +417,9 @@
         private Label label9;
         private ComboBox comboBoxCondition;
         private ComboBox comboBoxCountry;
+        private Label label12;
+        private ComboBox comboBoxGear;
+        private Label label11;
+        private TextBox textBoxHP;
     }
 }

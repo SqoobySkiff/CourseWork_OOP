@@ -39,6 +39,8 @@
             labelDescription = new Label();
             labelCondition = new Label();
             labelCountry = new Label();
+            labelHP = new Label();
+            labelGear = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImage).BeginInit();
             SuspendLayout();
             // 
@@ -162,12 +164,36 @@
             labelCountry.TabIndex = 11;
             labelCountry.Text = "label2";
             // 
+            // labelHP
+            // 
+            labelHP.AutoSize = true;
+            labelHP.Font = new Font("Unispace", 14.25F, FontStyle.Bold);
+            labelHP.ForeColor = SystemColors.ButtonFace;
+            labelHP.Location = new Point(287, 92);
+            labelHP.Name = "labelHP";
+            labelHP.Size = new Size(82, 23);
+            labelHP.TabIndex = 12;
+            labelHP.Text = "label2";
+            // 
+            // labelGear
+            // 
+            labelGear.AutoSize = true;
+            labelGear.Font = new Font("Unispace", 14.25F, FontStyle.Bold);
+            labelGear.ForeColor = SystemColors.ButtonFace;
+            labelGear.Location = new Point(422, 92);
+            labelGear.Name = "labelGear";
+            labelGear.Size = new Size(82, 23);
+            labelGear.TabIndex = 13;
+            labelGear.Text = "label2";
+            // 
             // CarPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(33, 11, 97);
             ClientSize = new Size(800, 450);
+            Controls.Add(labelGear);
+            Controls.Add(labelHP);
             Controls.Add(labelCountry);
             Controls.Add(labelCondition);
             Controls.Add(labelDescription);
@@ -201,5 +227,7 @@
         private Label labelDescription;
         private Label labelCondition;
         private Label labelCountry;
+        private Label labelHP;
+        private Label labelGear;
     }
 }

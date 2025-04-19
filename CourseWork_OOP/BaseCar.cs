@@ -12,6 +12,8 @@ namespace CourseWork_OOP
         public string Make { get; set; }
         public string Model { get; set; }
         public int Year { get; set; }
+        public int HP { get; set; }
+        public string Gear { get; set; }
         public string Color { get; set; }
         public decimal Price { get; set; }
         public string Condition { get; set; }

@@ -83,7 +83,7 @@ namespace CourseWork_OOP
             Panel carPanel = new Panel
             {
                 Width = 600,
-                Height = 111,
+                Height = 140,
                 BorderStyle = BorderStyle.FixedSingle,
                 Margin = new Padding(10),
                 BackColor = Color.White,
@@ -107,6 +107,20 @@ namespace CourseWork_OOP
                 AutoSize = true,
                 Location = new Point(10, 50)
             };
+
+            Label lblHP = new Label
+            {
+                Text = $"HP: {car.HP}",
+                AutoSize = true,
+                Location = new Point(10, 90)
+            };
+            Label lblGear = new Label
+            {
+                Text = $"Gear: {car.Gear}",
+                AutoSize = true,
+                Location = new Point(145, 90)
+            };
+
             Label lblColor = new Label
             {
                 Text = $"Color: {car.Color}",
@@ -117,33 +131,33 @@ namespace CourseWork_OOP
             {
                 Text = $"Country: {car.Country}",
                 AutoSize = true,
-                Location = new Point(10, 90)
+                Location = new Point(10, 110)
             };
             Label lblCondition = new Label
             {
                 Text = $"Condition: {car.Condition}",
                 AutoSize = true,
-                Location = new Point(145, 90)
+                Location = new Point(145, 110)
             };
 
             Label lblPrice = new Label
             {
                 Text = $"Price: {car.Price}",
                 AutoSize = true,
-                Location = new Point(520, 90)
+                Location = new Point(520, 120)
             };
             string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, car.ImagePath);
             PictureBox pictureBox = new PictureBox
             {
                 Image = File.Exists(imagePath) ? Image.FromFile(imagePath) : null,
-                Location = new Point(250, 5),
+                Location = new Point(250, 20),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 Size = new Size(200, 100)
             };
             Button btnDetails = new Button
             {
                 Text = "Show",
-                Location = new Point(460, 40),
+                Location = new Point(460, 70),
                 Size = new Size(100, 30),
                 BackColor = Color.LightGray
             };
@@ -157,6 +171,10 @@ namespace CourseWork_OOP
             carPanel.Controls.Add(pictureBox);
             carPanel.Controls.Add(btnDetails);
             carPanel.Controls.Add(lblCountry);
+
+            carPanel.Controls.Add(lblGear);
+            carPanel.Controls.Add(lblHP);
+
             carPanel.Controls.Add(lblCondition);
 
             flowLayoutPanelContent.Controls.Add(carPanel);
