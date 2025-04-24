@@ -156,15 +156,16 @@ namespace CourseWork_OOP
             string user = Session.LoggedInUsername;
             string basketDirectory = @"userBaskets";
             string basketPath = Path.Combine(basketDirectory, $"{user}_basket.json");
+            string approvingPath = @"dataBase\carsWaitingApprove.json";
 
-            if (!File.Exists(basketPath))
+            if (!File.Exists(basketPath) || !File.Exists(approvingPath))
             {
-                Console.WriteLine("Basket file not found.");
+                Console.WriteLine("Basket or approving file not found.");
                 return;
             }
 
-            string json = File.ReadAllText(basketPath);
-            UserBasket basket = JsonSerializer.Deserialize<UserBasket>(json);
+            string jsonBasket = File.ReadAllText(basketPath);
+            UserBasket basket = JsonSerializer.Deserialize<UserBasket>(jsonBasket);
 
             int lightCountBefore = basket.lightcars.Count;
             int suvCountBefore = basket.suv.Count;
@@ -178,15 +179,25 @@ namespace CourseWork_OOP
             {
                 string updatedJson = JsonSerializer.Serialize(basket, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(basketPath, updatedJson);
+
+                string jsonApproving = File.ReadAllText(approvingPath);
+                List<SellerRequest> approvalRequests = JsonSerializer.Deserialize<List<SellerRequest>>(jsonApproving) ?? new List<SellerRequest>();
+
+                approvalRequests.RemoveAll(request => request.CarId == carInput.ID && request.RequestedBy == user);
+
+                string updatedApprovingJson = JsonSerializer.Serialize(approvalRequests, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(approvingPath, updatedApprovingJson);
+
                 BacketForm form = new BacketForm(ShopForm);
                 form.Show();
                 this.Close();
             }
             else
             {
-                Console.WriteLine($"No car with ID {carInput.ID} found.");
+                Console.WriteLine($"No car with ID {carInput.ID} found in the basket.");
             }
         }
+
 
         private void labelReturn_Click(object sender, EventArgs e)
         {

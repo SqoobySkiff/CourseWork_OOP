@@ -8,8 +8,8 @@ namespace CourseWork_OOP
 {
     public class SellerRequest
     {
-        public int CarId { get; set; }  // ID of the car being requested
-        public string RequestedBy { get; set; }  // Username of the person requesting the car
-        public DateTime RequestDate { get; set; }  // Date and time when the request was made
+        public int CarId { get; set; }  
+        public string RequestedBy { get; set; }  
+        public DateTime RequestDate { get; set; }  
     }
 }
