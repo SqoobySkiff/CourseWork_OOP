@@ -8,8 +8,8 @@ namespace CourseWork_OOP
 {
     public class UserBasket
     {
-        public List<BasketItem> lightcars { get; set; } = new List<BasketItem>();
-        public List<BasketItem> suv { get; set; } = new List<BasketItem>();
+        public List<LightCars> lightcars { get; set; } = new List<LightCars>();
+        public List<SUV> suv { get; set; } = new List<SUV>();
     }
 
 }

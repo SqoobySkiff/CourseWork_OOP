@@ -8,6 +8,8 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace CourseWork_OOP
 {
@@ -124,6 +126,14 @@ namespace CourseWork_OOP
                 SizeMode = PictureBoxSizeMode.Zoom,
                 Size = new Size(200, 100)
             };
+            Button buttonDelete = new Button
+            {
+                Text = "Decline order",
+                Location = new Point(460, 70),
+                Size = new Size(100, 50),
+                BackColor = Color.LightGray
+            };
+            buttonDelete.Click += (sender, e) => DeleteCarFromBascket(car);
 
             carPanel.Controls.Add(lblMake);
             carPanel.Controls.Add(lblModel);
@@ -132,13 +142,50 @@ namespace CourseWork_OOP
             carPanel.Controls.Add(lblPrice);
             carPanel.Controls.Add(pictureBox);
             carPanel.Controls.Add(lblCountry);
-
+            carPanel.Controls.Add(buttonDelete);
             carPanel.Controls.Add(lblGear);
             carPanel.Controls.Add(lblHP);
 
             carPanel.Controls.Add(lblCondition);
 
             flowLayoutPanelBacket.Controls.Add(carPanel);
+        }
+
+        private void DeleteCarFromBascket(BaseCar carInput)
+        {
+            string user = Session.LoggedInUsername;
+            string basketDirectory = @"userBaskets";
+            string basketPath = Path.Combine(basketDirectory, $"{user}_basket.json");
+
+            if (!File.Exists(basketPath))
+            {
+                Console.WriteLine("Basket file not found.");
+                return;
+            }
+
+            string json = File.ReadAllText(basketPath);
+            UserBasket basket = JsonSerializer.Deserialize<UserBasket>(json);
+
+            int lightCountBefore = basket.lightcars.Count;
+            int suvCountBefore = basket.suv.Count;
+
+            basket.lightcars.RemoveAll(car => car.ID == carInput.ID);
+            basket.suv.RemoveAll(car => car.ID == carInput.ID);
+
+            int totalRemoved = (lightCountBefore - basket.lightcars.Count) + (suvCountBefore - basket.suv.Count);
+
+            if (totalRemoved > 0)
+            {
+                string updatedJson = JsonSerializer.Serialize(basket, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(basketPath, updatedJson);
+                BacketForm form = new BacketForm(ShopForm);
+                form.Show();
+                this.Close();
+            }
+            else
+            {
+                Console.WriteLine($"No car with ID {carInput.ID} found.");
+            }
         }
 
         private void labelReturn_Click(object sender, EventArgs e)

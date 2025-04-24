@@ -66,7 +66,7 @@ namespace CourseWork_OOP
 
             foreach (var car in shopForm.allCars)
             {
-                if (car == selectedCar)
+                if (car.ID == selectedCar.ID)
                 {
                     if (car is SUV)
                     {

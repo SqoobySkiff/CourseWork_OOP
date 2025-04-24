@@ -66,10 +66,6 @@ namespace CourseWork_OOP
 
         private void UpdateCarVisual(List<BaseCar> list)
         {
-            allCars.Clear();
-            string jsonText = File.ReadAllText(jsonFilePath);
-            vehicles = JsonSerializer.Deserialize<VehiclesData>(jsonText);
-            CombineCars(vehicles);
             flowLayoutPanelContent.Controls.Clear();
 
             foreach (var car in list)
@@ -79,6 +75,7 @@ namespace CourseWork_OOP
 
             flowLayoutPanelContent.Refresh();
         }
+
 
         private void AddCarPanel(BaseCar car)
         {
@@ -233,8 +230,17 @@ namespace CourseWork_OOP
         private void OpenCarPage(BaseCar car)
         {
             this.Hide();
-            CarPage carPage = new CarPage(car, this);
-            carPage.Show();
+            CarPage carPage;
+            if (car is SUV)
+            {
+               carPage = new CarPage((SUV)car, this);
+                carPage.Show();
+            }
+            else if (car is LightCars)
+            {
+                carPage = new CarPage((LightCars)car, this);
+                carPage.Show();
+            }
         }
 
         private void ShopForm_Load(object sender, EventArgs e)
