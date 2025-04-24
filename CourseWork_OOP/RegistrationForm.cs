@@ -16,9 +16,11 @@ namespace CourseWork_OOP
         private string jsonPath = @"dataBase\users.json";
         private List<Seller> sellers = new List<Seller>();
         private List<Customer> customers = new List<Customer>();
+        private Form1 mainForm;
 
-        public RegistrationForm()
+        public RegistrationForm(Form1 form)
         {
+            mainForm = form;
             InitializeComponent();
             InitializeForm();
         }
@@ -66,17 +68,14 @@ namespace CourseWork_OOP
                 return;
             }
 
-            // Ensure file exists and is properly formatted
             if (!File.Exists(jsonPath) || new FileInfo(jsonPath).Length == 0)
             {
                 File.WriteAllText(jsonPath, JsonSerializer.Serialize(new ListOfUsers(), new JsonSerializerOptions { WriteIndented = true }));
             }
 
-            // Load users from JSON
             string jsonText = File.ReadAllText(jsonPath);
             ListOfUsers users = JsonSerializer.Deserialize<ListOfUsers>(jsonText) ?? new ListOfUsers();
 
-            // Check for duplicate users
             if (users.Sellers.Any(u => u.Login == textBoxLogin.Text || u.Email == textBoxEmail.Text) ||
                 users.Customers.Any(u => u.Login == textBoxLogin.Text || u.Email == textBoxEmail.Text))
             {
@@ -84,10 +83,15 @@ namespace CourseWork_OOP
                 return;
             }
 
-            // Add new user
             if (checkBoxUser.Checked)
             {
                 users.Customers.Add(new Customer
+                {
+                    Login = textBoxLogin.Text,
+                    Email = textBoxEmail.Text,
+                    Password = textBoxPassword.Text
+                });
+                mainForm.customers.Add(new Customer
                 {
                     Login = textBoxLogin.Text,
                     Email = textBoxEmail.Text,
@@ -103,14 +107,36 @@ namespace CourseWork_OOP
                     Email = textBoxEmail.Text,
                     Password = textBoxPassword.Text
                 });
+                mainForm.sellers.Add(new Seller
+                {
+                    Login = textBoxLogin.Text,
+                    Email = textBoxEmail.Text,
+                    Password = textBoxPassword.Text
+                });
             }
-            // Save updated data to JSON
             string updatedJson = JsonSerializer.Serialize(users, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(jsonPath, updatedJson);
 
             MessageBox.Show("User has been created!", "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Form1 form = new Form1();
+            form.Show();
             this.Close();
         }
 
+        private void checkBoxSeller_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxUser.Checked)
+            {
+                checkBoxUser.Checked = false;
+            }
+        }
+
+        private void checkBoxUser_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSeller.Checked)
+            {
+                checkBoxSeller.Checked = false;
+            }
+        }
     }
 }

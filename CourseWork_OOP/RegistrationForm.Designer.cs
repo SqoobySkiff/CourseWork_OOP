@@ -124,6 +124,7 @@
             checkBoxSeller.TabIndex = 9;
             checkBoxSeller.Text = "Seller";
             checkBoxSeller.UseVisualStyleBackColor = true;
+            checkBoxSeller.CheckedChanged += checkBoxSeller_CheckedChanged;
             // 
             // checkBoxUser
             // 
@@ -134,6 +135,7 @@
             checkBoxUser.TabIndex = 10;
             checkBoxUser.Text = "Customer";
             checkBoxUser.UseVisualStyleBackColor = true;
+            checkBoxUser.CheckedChanged += checkBoxUser_CheckedChanged;
             // 
             // RegistrationForm
             // 

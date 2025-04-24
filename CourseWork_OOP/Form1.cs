@@ -1,12 +1,13 @@
 using System.Text.Json;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseWork_OOP
 {
     public partial class Form1 : Form
     {
         private string jsonPath = @"dataBase\users.json";
-        private List<Seller> sellers = new List<Seller>();
-        private List<Customer> customers = new List<Customer>();
+        public List<Seller> sellers = new List<Seller>();
+        public List<Customer> customers = new List<Customer>();
         ListOfUsers listOfUsers;
         public Form1()
         {
@@ -47,6 +48,7 @@ namespace CourseWork_OOP
                 {
                     ShopForm shopForm = new ShopForm();
                     shopForm.Show();
+                    Session.SetUser(login_username.Text);
                     this.Hide();
                     return;
                 }
@@ -67,7 +69,7 @@ namespace CourseWork_OOP
 
         private void buttonCreateAccount_Click(object sender, EventArgs e)
         {
-            RegistrationForm registrationForm = new RegistrationForm();
+            RegistrationForm registrationForm = new RegistrationForm(this);
             registrationForm.Show();
         }
     }

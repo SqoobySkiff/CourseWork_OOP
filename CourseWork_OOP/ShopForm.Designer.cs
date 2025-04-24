@@ -41,12 +41,14 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             buttonSell = new Button();
             panel2 = new Panel();
+            pictureBoxBacket = new PictureBox();
             panel3 = new Panel();
-            textBoxModel = new TextBox();
-            label4 = new Label();
             label5 = new Label();
+            label4 = new Label();
+            textBoxModel = new TextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxBacket).BeginInit();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -161,12 +163,23 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ActiveCaption;
+            panel2.Controls.Add(pictureBoxBacket);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(panel3);
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(758, 125);
             panel2.TabIndex = 16;
+            // 
+            // pictureBoxBacket
+            // 
+            pictureBoxBacket.Cursor = Cursors.Hand;
+            pictureBoxBacket.Location = new Point(682, 4);
+            pictureBoxBacket.Name = "pictureBoxBacket";
+            pictureBoxBacket.Size = new Size(32, 26);
+            pictureBoxBacket.TabIndex = 17;
+            pictureBoxBacket.TabStop = false;
+            pictureBoxBacket.Click += pictureBoxBacket_Click;
             // 
             // panel3
             // 
@@ -184,12 +197,14 @@
             panel3.Size = new Size(734, 92);
             panel3.TabIndex = 16;
             // 
-            // textBoxModel
+            // label5
             // 
-            textBoxModel.Location = new Point(177, 51);
-            textBoxModel.Name = "textBoxModel";
-            textBoxModel.Size = new Size(172, 23);
-            textBoxModel.TabIndex = 16;
+            label5.AutoSize = true;
+            label5.Location = new Point(177, 35);
+            label5.Name = "label5";
+            label5.Size = new Size(41, 15);
+            label5.TabIndex = 18;
+            label5.Text = "Model";
             // 
             // label4
             // 
@@ -200,14 +215,12 @@
             label4.TabIndex = 17;
             label4.Text = "Make";
             // 
-            // label5
+            // textBoxModel
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(177, 35);
-            label5.Name = "label5";
-            label5.Size = new Size(41, 15);
-            label5.TabIndex = 18;
-            label5.Text = "Model";
+            textBoxModel.Location = new Point(177, 51);
+            textBoxModel.Name = "textBoxModel";
+            textBoxModel.Size = new Size(172, 23);
+            textBoxModel.TabIndex = 16;
             // 
             // ShopForm
             // 
@@ -225,6 +238,7 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxBacket).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ResumeLayout(false);
@@ -249,5 +263,6 @@
         private TextBox textBoxModel;
         private Label label5;
         private Label label4;
+        private PictureBox pictureBoxBacket;
     }
 }

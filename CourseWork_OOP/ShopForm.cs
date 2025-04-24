@@ -26,6 +26,8 @@ namespace CourseWork_OOP
         private void InitializeForm()
         {
             this.CenterToScreen();
+            pictureBoxBacket.Image = Image.FromFile(@"backetImage\backet.png");
+            pictureBoxBacket.SizeMode = PictureBoxSizeMode.Zoom;
             flowLayoutPanelContent.AutoScroll = true;
             if (!File.Exists(jsonFilePath))
             {
@@ -247,5 +249,11 @@ namespace CourseWork_OOP
             form.Show();
         }
 
+        private void pictureBoxBacket_Click(object sender, EventArgs e)
+        {
+            BacketForm backetForm = new BacketForm(this);
+            backetForm.Show();
+            this.Hide();
+        }
     }
 }

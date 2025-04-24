@@ -30,9 +30,10 @@
         {
             button1 = new Button();
             button2 = new Button();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            flowLayoutPanelCars = new FlowLayoutPanel();
             panel1 = new Panel();
             label1 = new Label();
+            flowLayoutPanelOrders = new FlowLayoutPanel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -56,13 +57,13 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanelCars
             // 
-            flowLayoutPanel1.BackColor = Color.FromArgb(33, 11, 97);
-            flowLayoutPanel1.Location = new Point(1, 161);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(799, 290);
-            flowLayoutPanel1.TabIndex = 2;
+            flowLayoutPanelCars.BackColor = Color.FromArgb(33, 11, 97);
+            flowLayoutPanelCars.Location = new Point(1, 172);
+            flowLayoutPanelCars.Name = "flowLayoutPanelCars";
+            flowLayoutPanelCars.Size = new Size(397, 279);
+            flowLayoutPanelCars.TabIndex = 2;
             // 
             // panel1
             // 
@@ -87,13 +88,22 @@
             label1.TabIndex = 2;
             label1.Text = "Admin Page";
             // 
+            // flowLayoutPanelOrders
+            // 
+            flowLayoutPanelOrders.BackColor = Color.FromArgb(33, 11, 97);
+            flowLayoutPanelOrders.Location = new Point(404, 172);
+            flowLayoutPanelOrders.Name = "flowLayoutPanelOrders";
+            flowLayoutPanelOrders.Size = new Size(396, 279);
+            flowLayoutPanelOrders.TabIndex = 5;
+            // 
             // SellerCabinetForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(flowLayoutPanelOrders);
             Controls.Add(panel1);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(flowLayoutPanelCars);
             Name = "SellerCabinetForm";
             Text = "SellerCabinetForm";
             panel1.ResumeLayout(false);
@@ -105,8 +115,9 @@
 
         private Button button1;
         private Button button2;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flowLayoutPanelCars;
         private Panel panel1;
         private Label label1;
+        private FlowLayoutPanel flowLayoutPanelOrders;
     }
 }
