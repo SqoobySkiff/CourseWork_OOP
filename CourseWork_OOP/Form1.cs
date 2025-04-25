@@ -79,6 +79,7 @@ namespace CourseWork_OOP
         {
             RegistrationForm registrationForm = new RegistrationForm(this);
             registrationForm.Show();
+            this.Hide();
         }
     }
 }

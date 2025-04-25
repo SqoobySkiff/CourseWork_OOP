@@ -39,6 +39,10 @@
             textBoxDescription = new TextBox();
             label1 = new Label();
             panel2 = new Panel();
+            label12 = new Label();
+            comboBoxGear = new ComboBox();
+            label11 = new Label();
+            textBoxHP = new TextBox();
             label10 = new Label();
             label9 = new Label();
             comboBoxCondition = new ComboBox();
@@ -52,10 +56,7 @@
             label3 = new Label();
             label2 = new Label();
             panel3 = new Panel();
-            textBoxHP = new TextBox();
-            label11 = new Label();
-            label12 = new Label();
-            comboBoxGear = new ComboBox();
+            label13 = new Label();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
@@ -160,11 +161,11 @@
             label1.AutoSize = true;
             label1.Font = new Font("Unispace", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ControlDark;
-            label1.Location = new Point(75, 9);
+            label1.Location = new Point(199, 9);
             label1.Name = "label1";
-            label1.Size = new Size(634, 58);
+            label1.Size = new Size(402, 58);
             label1.TabIndex = 9;
-            label1.Text = "SELL YOUR CAR WITH US";
+            label1.Text = "POST NEW CAR ";
             // 
             // panel2
             // 
@@ -195,6 +196,45 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(570, 364);
             panel2.TabIndex = 11;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = SystemColors.ControlDark;
+            label12.Location = new Point(293, 164);
+            label12.Name = "label12";
+            label12.Size = new Size(73, 29);
+            label12.TabIndex = 25;
+            label12.Text = "Gear";
+            // 
+            // comboBoxGear
+            // 
+            comboBoxGear.FormattingEnabled = true;
+            comboBoxGear.Location = new Point(270, 196);
+            comboBoxGear.Name = "comboBoxGear";
+            comboBoxGear.Size = new Size(121, 23);
+            comboBoxGear.TabIndex = 24;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.ForeColor = SystemColors.ControlDark;
+            label11.Location = new Point(145, 167);
+            label11.Name = "label11";
+            label11.Size = new Size(43, 29);
+            label11.TabIndex = 23;
+            label11.Text = "HP";
+            // 
+            // textBoxHP
+            // 
+            textBoxHP.BackColor = Color.FromArgb(224, 224, 224);
+            textBoxHP.BorderStyle = BorderStyle.None;
+            textBoxHP.Location = new Point(145, 199);
+            textBoxHP.Name = "textBoxHP";
+            textBoxHP.Size = new Size(100, 16);
+            textBoxHP.TabIndex = 22;
             // 
             // label10
             // 
@@ -331,44 +371,18 @@
             panel3.Size = new Size(200, 152);
             panel3.TabIndex = 12;
             // 
-            // textBoxHP
+            // label13
             // 
-            textBoxHP.BackColor = Color.FromArgb(224, 224, 224);
-            textBoxHP.BorderStyle = BorderStyle.None;
-            textBoxHP.Location = new Point(145, 199);
-            textBoxHP.Name = "textBoxHP";
-            textBoxHP.Size = new Size(100, 16);
-            textBoxHP.TabIndex = 22;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.ForeColor = SystemColors.ControlDark;
-            label11.Location = new Point(145, 167);
-            label11.Name = "label11";
-            label11.Size = new Size(43, 29);
-            label11.TabIndex = 23;
-            label11.Text = "HP";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.ForeColor = SystemColors.ControlDark;
-            label12.Location = new Point(293, 164);
-            label12.Name = "label12";
-            label12.Size = new Size(73, 29);
-            label12.TabIndex = 25;
-            label12.Text = "Gear";
-            // 
-            // comboBoxGear
-            // 
-            comboBoxGear.FormattingEnabled = true;
-            comboBoxGear.Location = new Point(270, 196);
-            comboBoxGear.Name = "comboBoxGear";
-            comboBoxGear.Size = new Size(121, 23);
-            comboBoxGear.TabIndex = 24;
+            label13.AutoSize = true;
+            label13.Cursor = Cursors.Hand;
+            label13.Font = new Font("Unispace", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.ForeColor = SystemColors.ButtonFace;
+            label13.Location = new Point(739, 22);
+            label13.Name = "label13";
+            label13.Size = new Size(46, 42);
+            label13.TabIndex = 13;
+            label13.Text = "←";
+            label13.Click += label13_Click;
             // 
             // SellForm
             // 
@@ -377,9 +391,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(33, 11, 97);
             ClientSize = new Size(800, 450);
+            Controls.Add(label13);
             Controls.Add(panel3);
             Controls.Add(label1);
             Controls.Add(panel2);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "SellForm";
             Text = "SellForm";
             panel2.ResumeLayout(false);
@@ -421,5 +437,6 @@
         private ComboBox comboBoxGear;
         private Label label11;
         private TextBox textBoxHP;
+        private Label label13;
     }
 }

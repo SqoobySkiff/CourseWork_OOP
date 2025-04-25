@@ -59,6 +59,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(labelReturn);
             Controls.Add(flowLayoutPanelBacket);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "BacketForm";
             Text = "BacketForm";
             ResumeLayout(false);

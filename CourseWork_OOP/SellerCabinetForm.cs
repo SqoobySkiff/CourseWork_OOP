@@ -24,6 +24,7 @@ namespace CourseWork_OOP
             Initialize();
             LoadCarIDs();
             LoadApprovalRequests();
+            this.CenterToScreen();
         }
         private void LoadApprovalRequests()
         {
@@ -99,6 +100,7 @@ namespace CourseWork_OOP
 
         private void Initialize()
         {
+            this.CenterToScreen();
             flowLayoutPanelCars.AutoScroll = true;
             if (!File.Exists(jsonFilePath))
             {
@@ -334,6 +336,11 @@ namespace CourseWork_OOP
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
             LoadApprovalRequests();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

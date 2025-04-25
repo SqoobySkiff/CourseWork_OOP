@@ -32,11 +32,12 @@
             button2 = new Button();
             flowLayoutPanelCars = new FlowLayoutPanel();
             panel1 = new Panel();
+            label3 = new Label();
+            buttonRefresh = new Button();
             button3 = new Button();
             textBoxID = new TextBox();
             label1 = new Label();
             flowLayoutPanelOrders = new FlowLayoutPanel();
-            buttonRefresh = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -70,7 +71,8 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ControlDarkDark;
+            panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.Controls.Add(label3);
             panel1.Controls.Add(buttonRefresh);
             panel1.Controls.Add(button3);
             panel1.Controls.Add(textBoxID);
@@ -81,6 +83,29 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(799, 169);
             panel1.TabIndex = 4;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.Cursor = Cursors.Hand;
+            label3.Font = new Font("Unispace", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(768, 3);
+            label3.Name = "label3";
+            label3.Size = new Size(28, 29);
+            label3.TabIndex = 15;
+            label3.Text = "X";
+            label3.Click += label3_Click;
+            // 
+            // buttonRefresh
+            // 
+            buttonRefresh.Location = new Point(629, 3);
+            buttonRefresh.Name = "buttonRefresh";
+            buttonRefresh.Size = new Size(101, 23);
+            buttonRefresh.TabIndex = 5;
+            buttonRefresh.Text = "Refresh Request";
+            buttonRefresh.UseVisualStyleBackColor = true;
+            buttonRefresh.Click += buttonRefresh_Click;
             // 
             // button3
             // 
@@ -102,10 +127,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = SystemColors.ControlDarkDark;
+            label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Unispace", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(319, 9);
+            label1.Location = new Point(309, 9);
             label1.Name = "label1";
             label1.Size = new Size(195, 35);
             label1.TabIndex = 2;
@@ -119,24 +144,16 @@
             flowLayoutPanelOrders.Size = new Size(338, 279);
             flowLayoutPanelOrders.TabIndex = 5;
             // 
-            // buttonRefresh
-            // 
-            buttonRefresh.Location = new Point(629, 3);
-            buttonRefresh.Name = "buttonRefresh";
-            buttonRefresh.Size = new Size(101, 23);
-            buttonRefresh.TabIndex = 5;
-            buttonRefresh.Text = "Refresh Request";
-            buttonRefresh.UseVisualStyleBackColor = true;
-            buttonRefresh.Click += buttonRefresh_Click;
-            // 
             // SellerCabinetForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
             Controls.Add(flowLayoutPanelOrders);
             Controls.Add(panel1);
             Controls.Add(flowLayoutPanelCars);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "SellerCabinetForm";
             Text = "SellerCabinetForm";
             panel1.ResumeLayout(false);
@@ -155,5 +172,6 @@
         private Button button3;
         private TextBox textBoxID;
         private Button buttonRefresh;
+        private Label label3;
     }
 }

@@ -77,7 +77,7 @@
             // 
             // buttonSearch
             // 
-            buttonSearch.Location = new Point(8, 6);
+            buttonSearch.Location = new Point(15, 7);
             buttonSearch.Name = "buttonSearch";
             buttonSearch.Size = new Size(75, 23);
             buttonSearch.TabIndex = 11;
@@ -87,9 +87,9 @@
             // 
             // textBoxMake
             // 
-            textBoxMake.Location = new Point(3, 51);
+            textBoxMake.Location = new Point(3, 32);
             textBoxMake.Name = "textBoxMake";
-            textBoxMake.Size = new Size(168, 23);
+            textBoxMake.Size = new Size(80, 23);
             textBoxMake.TabIndex = 10;
             // 
             // textBoxTo
@@ -115,7 +115,7 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(textBoxTo);
             panel1.Controls.Add(textBoxFrom);
-            panel1.Location = new Point(526, 3);
+            panel1.Location = new Point(526, 14);
             panel1.Name = "panel1";
             panel1.Size = new Size(205, 71);
             panel1.TabIndex = 12;
@@ -142,7 +142,7 @@
             // 
             // buttonClearSearchSettings
             // 
-            buttonClearSearchSettings.Location = new Point(89, 6);
+            buttonClearSearchSettings.Location = new Point(96, 8);
             buttonClearSearchSettings.Name = "buttonClearSearchSettings";
             buttonClearSearchSettings.Size = new Size(140, 23);
             buttonClearSearchSettings.TabIndex = 13;
@@ -152,7 +152,7 @@
             // 
             // buttonSell
             // 
-            buttonSell.Location = new Point(423, 2);
+            buttonSell.Location = new Point(601, 4);
             buttonSell.Name = "buttonSell";
             buttonSell.Size = new Size(75, 23);
             buttonSell.TabIndex = 15;
@@ -166,6 +166,9 @@
             panel2.Controls.Add(pictureBoxBacket);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(panel3);
+            panel2.Controls.Add(buttonSell);
+            panel2.Controls.Add(buttonSearch);
+            panel2.Controls.Add(buttonClearSearchSettings);
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Size(758, 125);
@@ -187,11 +190,8 @@
             panel3.Controls.Add(label5);
             panel3.Controls.Add(label4);
             panel3.Controls.Add(textBoxModel);
-            panel3.Controls.Add(buttonSell);
             panel3.Controls.Add(textBoxMake);
             panel3.Controls.Add(panel1);
-            panel3.Controls.Add(buttonClearSearchSettings);
-            panel3.Controls.Add(buttonSearch);
             panel3.Location = new Point(12, 30);
             panel3.Name = "panel3";
             panel3.Size = new Size(734, 92);
@@ -200,7 +200,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(177, 35);
+            label5.Location = new Point(114, 14);
             label5.Name = "label5";
             label5.Size = new Size(41, 15);
             label5.TabIndex = 18;
@@ -209,7 +209,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(0, 35);
+            label4.Location = new Point(21, 14);
             label4.Name = "label4";
             label4.Size = new Size(36, 15);
             label4.TabIndex = 17;
@@ -217,9 +217,9 @@
             // 
             // textBoxModel
             // 
-            textBoxModel.Location = new Point(177, 51);
+            textBoxModel.Location = new Point(89, 32);
             textBoxModel.Name = "textBoxModel";
-            textBoxModel.Size = new Size(172, 23);
+            textBoxModel.Size = new Size(97, 23);
             textBoxModel.TabIndex = 16;
             // 
             // ShopForm

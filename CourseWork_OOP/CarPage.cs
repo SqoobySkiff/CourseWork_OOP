@@ -20,6 +20,7 @@ namespace CourseWork_OOP
 
         public CarPage(BaseCar car, ShopForm shopForm)
         {
+            this.CenterToScreen();
             InitializeComponent();
             this.CenterToScreen();
             this.car = car;

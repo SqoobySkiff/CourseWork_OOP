@@ -28,7 +28,8 @@ namespace CourseWork_OOP
             InitializeDragDrop();
             this.jsonFilePath = jsonFilePath;
             this.IDIES = IDIES;
-            this.rnd = new Random(); 
+            this.rnd = new Random();
+            this.CenterToScreen();
 
             comboBoxCondition.Items.Add("New");
             comboBoxCondition.Items.Add("Used");
@@ -111,14 +112,14 @@ namespace CourseWork_OOP
                 string.IsNullOrWhiteSpace(textBoxPrice.Text) ||
                 string.IsNullOrWhiteSpace(textBoxDescription.Text) ||
                 string.IsNullOrWhiteSpace(textBoxHP.Text)
-                ) 
+                )
 
             {
                 MessageBox.Show("All fields should contains info", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(comboBoxCondition.Text) || string.IsNullOrWhiteSpace(comboBoxCountry.Text) 
+            if (string.IsNullOrWhiteSpace(comboBoxCondition.Text) || string.IsNullOrWhiteSpace(comboBoxCountry.Text)
                 || string.IsNullOrWhiteSpace(comboBoxGear.Text))
             {
                 MessageBox.Show("Please select both Condition and Country options.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -193,20 +194,25 @@ namespace CourseWork_OOP
 
         private int SetID()
         {
-            HashSet<int> idSet = new HashSet<int>(IDIES); 
+            HashSet<int> idSet = new HashSet<int>(IDIES);
 
             int newId;
             do
             {
-                newId = rnd.Next(1, 100000); 
+                newId = rnd.Next(1, 100000);
             } while (idSet.Contains(newId));
 
-            IDIES.Add(newId); 
+            IDIES.Add(newId);
             return newId;
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -23,6 +23,7 @@ namespace CourseWork_OOP
             mainForm = form;
             InitializeComponent();
             InitializeForm();
+            this.CenterToScreen();
         }
 
         public void InitializeForm()
@@ -137,6 +138,13 @@ namespace CourseWork_OOP
             {
                 checkBoxSeller.Checked = false;
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            Form1 form = new Form1();
+            form.Show();
+            this.Close();
         }
     }
 }
