@@ -59,6 +59,7 @@ namespace CourseWork_OOP
         private void AddToBasket(BaseCar selectedCar)
         {
             string user = Session.LoggedInUsername;
+            string email = Session.LoggedInEmail;
             bool isSUV = false;
             bool isLightCar = false;
             string basketPath = $@"userBaskets\{user}_basket.json";
@@ -152,12 +153,13 @@ namespace CourseWork_OOP
                 approvalRequests = JsonSerializer.Deserialize<List<SellerRequest>>(approveJson) ?? new List<SellerRequest>();
             }
 
-            if (!approvalRequests.Any(r => r.CarId == newCar.ID && r.RequestedBy == user))
+            if (!approvalRequests.Any(r => r.CarId == newCar.ID && r.RequestedBy == user && r.Email == email))
             {
                 approvalRequests.Add(new SellerRequest
                 {
                     CarId = newCar.ID,
                     RequestedBy = user,
+                    Email = email,
                     RequestDate = DateTime.Now
                 });
 

@@ -8,6 +8,7 @@ namespace CourseWork_OOP
 {
     public interface IControls
     {
-        bool FindByPriceMath(BaseCar car, int from, int to);
+        void CombineCars(VehiclesData vehicles);
+        void AddCarPanel(BaseCar car);
     }
 }

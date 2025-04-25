@@ -52,7 +52,7 @@ namespace CourseWork_OOP
             UpdateCarVisual(allCars);
         }
 
-        private void CombineCars(VehiclesData vehicles)
+        public void CombineCars(VehiclesData vehicles)
         {
             foreach (var car in vehicles.lightcars)
             {
@@ -63,6 +63,8 @@ namespace CourseWork_OOP
                 allCars.Add(car);
             }
         }
+
+
 
         private void UpdateCarVisual(List<BaseCar> list)
         {
@@ -77,7 +79,7 @@ namespace CourseWork_OOP
         }
 
 
-        private void AddCarPanel(BaseCar car)
+        public void AddCarPanel(BaseCar car)
         {
             Panel carPanel = new Panel
             {

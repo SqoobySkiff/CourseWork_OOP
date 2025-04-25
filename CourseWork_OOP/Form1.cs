@@ -46,9 +46,10 @@ namespace CourseWork_OOP
             {
                 if (login_password.Text == user.Password && login_username.Text == user.Login)
                 {
+                    string email = FindEmail(user.Login);
+                    Session.SetUser(user.Login, email);
                     ShopForm shopForm = new ShopForm();
                     shopForm.Show();
-                    Session.SetUser(login_username.Text);
                     this.Hide();
                     return;
                 }
@@ -65,6 +66,13 @@ namespace CourseWork_OOP
             }
             //3232323
             MessageBox.Show("Entry incorrect");
+        }
+
+        private string FindEmail(string login)
+        {
+            var user = customers.FirstOrDefault(u => u.Login == login);
+
+            return user?.Email ?? string.Empty;
         }
 
         private void buttonCreateAccount_Click(object sender, EventArgs e)

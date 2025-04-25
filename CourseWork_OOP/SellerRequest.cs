@@ -10,6 +10,7 @@ namespace CourseWork_OOP
     {
         public int CarId { get; set; }  
         public string RequestedBy { get; set; }  
+        public string Email { get; set; }
         public DateTime RequestDate { get; set; }  
     }
 }

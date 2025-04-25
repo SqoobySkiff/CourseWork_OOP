@@ -10,10 +10,12 @@ namespace CourseWork_OOP
     public static class Session
     {
         public static string LoggedInUsername;
+        public static string LoggedInEmail;
 
-        public static void SetUser(string username)
+        public static void SetUser(string username, string email)
         {
             LoggedInUsername = username;
+            LoggedInEmail = email;
 
             string basketDirectory = @"userBaskets";
             string basketPath = Path.Combine(basketDirectory, $"{username}_basket.json");

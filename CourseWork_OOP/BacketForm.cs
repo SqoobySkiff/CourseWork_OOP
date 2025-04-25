@@ -13,7 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace CourseWork_OOP
 {
-    public partial class BacketForm : Form
+    public partial class BacketForm : Form, IControls
     {
         private ShopForm ShopForm;
         public List<BaseCar> allCars;
@@ -40,7 +40,7 @@ namespace CourseWork_OOP
 
                 foreach (var car in allCars)
                 {
-                    DisplayCars(car);
+                    AddCarPanel(car);
                 }
     
             }
@@ -50,7 +50,7 @@ namespace CourseWork_OOP
             }
         }
 
-        private void DisplayCars(BaseCar car)
+        public void AddCarPanel(BaseCar car)
         {
             Panel carPanel = new Panel
             {
@@ -204,7 +204,7 @@ namespace CourseWork_OOP
             ShopForm.Show();
             this.Close();
         }
-        private void CombineCars(VehiclesData vehicles)
+        public void CombineCars(VehiclesData vehicles)
         {
             foreach (var car in vehicles.lightcars)
             {
