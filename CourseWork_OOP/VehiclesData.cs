@@ -10,5 +10,8 @@ namespace CourseWork_OOP
     {
         public List<LightCars> lightcars { get; set; }
         public List<SUV> suv { get; set; }
+
+        public List<Sportcar> sportcars { get; set; }
+        public List<Pickup> pickups { get; set; }
     }
 }

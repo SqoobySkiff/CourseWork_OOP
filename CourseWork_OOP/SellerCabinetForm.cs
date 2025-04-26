@@ -16,7 +16,7 @@ namespace CourseWork_OOP
         private List<BaseCar> tempID = new List<BaseCar>();
         public List<int> IDIES = new List<int>();
         VehiclesData vehicles;
-        private List<BaseCar> allCars = new List<BaseCar>();
+        public List<BaseCar> allCars = new List<BaseCar>();
 
         public SellerCabinetForm()
         {
@@ -89,6 +89,23 @@ namespace CourseWork_OOP
                     AutoSize = true
                 };
 
+                Button buttonApprove = new Button
+                {
+                    Text = "Approve",
+                    Location = new Point(160,30),
+                    BackColor = Color.LightGreen,
+                    AutoSize = true
+                };
+                Button buttonDecline = new Button
+                {
+                    Text = "Decline",
+                    Location = new Point(160, 60),
+                    BackColor = Color.Red,
+                    AutoSize = true
+                };
+
+                panel.Controls.Add(buttonDecline);
+                panel.Controls.Add(buttonApprove);
                 panel.Controls.Add(lblId);
                 panel.Controls.Add(lblUser);
                 panel.Controls.Add(lblEmail);
@@ -142,6 +159,8 @@ namespace CourseWork_OOP
                 {
                     IDIES = vehicles.lightcars.Select(car => car.ID).ToList();
                     IDIES.AddRange(vehicles.suv.Select(car => car.ID));
+                    IDIES.AddRange(vehicles.sportcars.Select(car => car.ID));
+                    IDIES.AddRange(vehicles.pickups.Select(car => car.ID));
                 }
             }
             catch (Exception ex)
@@ -173,8 +192,16 @@ namespace CourseWork_OOP
             {
                 allCars.Add(car);
             }
+            foreach (var car in vehicles.pickups)
+            {
+                allCars.Add(car);
+            }
+            foreach (var car in vehicles.sportcars)
+            {
+                allCars.Add(car);
+            }
         }
-        private void UpdateCarVisual(List<BaseCar> list)
+        public void UpdateCarVisual(List<BaseCar> list)
         {
             flowLayoutPanelCars.Controls.Clear();
 
@@ -188,7 +215,8 @@ namespace CourseWork_OOP
 
         private void Edit(BaseCar car)
         {
-
+            EditForm editForm = new EditForm(car, jsonFilePath, this);
+            editForm.Show();
         }
 
         public void AddCarPanel(BaseCar car)

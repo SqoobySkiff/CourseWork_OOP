@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace CourseWork_OOP
 {
-    public class BasketItem
+    public class Pickup : BaseCar
     {
-        public int CarId { get; set; }
-        public string Username { get; set; }
-        public DateTime AddedDate { get; set; }
     }
 }

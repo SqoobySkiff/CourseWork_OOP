@@ -214,6 +214,15 @@ namespace CourseWork_OOP
             {
                 allCars.Add(car);
             }
+            foreach (var car in vehicles.sportcars)
+            {
+                allCars.Add(car);
+            }
+            foreach (var car in vehicles.pickups)
+            {
+                allCars.Add(car);
+            }
+
         }
     }
 }

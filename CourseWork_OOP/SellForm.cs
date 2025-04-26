@@ -99,12 +99,6 @@ namespace CourseWork_OOP
 
         private void AddNewCar()
         {
-            if (checkBoxLightCars.Checked == checkBoxSUV.Checked)
-            {
-                MessageBox.Show("Choose only one category", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             if (string.IsNullOrWhiteSpace(textBoxMake.Text) ||
                 string.IsNullOrWhiteSpace(textBoxModel.Text) ||
                 string.IsNullOrWhiteSpace(textBoxYear.Text) ||
@@ -151,9 +145,45 @@ namespace CourseWork_OOP
                     Description = textBoxDescription.Text
                 };
             }
-            else
+            else if (checkBoxSUV.Checked)
             {
                 newCar = new SUV
+                {
+                    ID = SetID(),
+                    Make = textBoxMake.Text,
+                    Model = textBoxModel.Text,
+                    Year = int.Parse(textBoxYear.Text),
+                    HP = int.Parse(textBoxHP.Text),
+                    Gear = comboBoxGear.Text,
+                    Color = textBoxColor.Text,
+                    Price = decimal.Parse(textBoxPrice.Text),
+                    Condition = comboBoxCondition.Text,
+                    Country = comboBoxCountry.Text,
+                    ImagePath = imagePath,
+                    Description = textBoxDescription.Text
+                };
+            }
+            else if (checkBoxSportcar.Checked)
+            {
+                newCar = new Sportcar
+                {
+                    ID = SetID(),
+                    Make = textBoxMake.Text,
+                    Model = textBoxModel.Text,
+                    Year = int.Parse(textBoxYear.Text),
+                    HP = int.Parse(textBoxHP.Text),
+                    Gear = comboBoxGear.Text,
+                    Color = textBoxColor.Text,
+                    Price = decimal.Parse(textBoxPrice.Text),
+                    Condition = comboBoxCondition.Text,
+                    Country = comboBoxCountry.Text,
+                    ImagePath = imagePath,
+                    Description = textBoxDescription.Text
+                };
+            }
+            else
+            {
+                newCar = new Pickup
                 {
                     ID = SetID(),
                     Make = textBoxMake.Text,
@@ -180,6 +210,10 @@ namespace CourseWork_OOP
                     vehicles.lightcars.Add(lightCar);
                 else if (newCar is SUV suvCar)
                     vehicles.suv.Add(suvCar);
+                else if (newCar is Sportcar sportCar)
+                    vehicles.sportcars.Add(sportCar);
+                else if (newCar is Pickup pickupCar)
+                    vehicles.pickups.Add(pickupCar);
 
                 string updatedJson = JsonSerializer.Serialize(vehicles, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(jsonFilePath, updatedJson);
@@ -207,12 +241,35 @@ namespace CourseWork_OOP
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
+            checkBoxSUV.Checked = false;
+            checkBoxSportcar.Checked = false;
+            checkBoxPickup.Checked = false;
         }
 
         private void label13_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void checkBoxSportcar_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxLightCars.Checked = false;
+            checkBoxPickup.Checked = false;
+            checkBoxSUV.Checked = false;
+        }
+
+        private void checkBoxPickup_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxSportcar.Checked = false;
+            checkBoxLightCars.Checked = false;
+            checkBoxSUV.Checked = false;
+        }
+
+        private void checkBoxSUV_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxSportcar.Checked = false;
+            checkBoxLightCars.Checked = false;
+            checkBoxPickup.Checked = false;
         }
     }
 }

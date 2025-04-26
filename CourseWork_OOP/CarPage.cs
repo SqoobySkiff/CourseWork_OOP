@@ -63,6 +63,8 @@ namespace CourseWork_OOP
             string email = Session.LoggedInEmail;
             bool isSUV = false;
             bool isLightCar = false;
+            bool isSportCar = false;
+            bool isPickup = false;
             string basketPath = $@"userBaskets\{user}_basket.json";
             string approvingPath = $@"dataBase\carsWaitingApprove.json";
 
@@ -78,6 +80,15 @@ namespace CourseWork_OOP
                     {
                         isLightCar = true;
                     }
+                    else if(car is Sportcar)
+                    {
+                        isSportCar = true;
+                    }
+                    else if (car is Pickup)
+                    {
+                        isPickup = true;
+                    }
+
                 }
             }
 
@@ -118,6 +129,42 @@ namespace CourseWork_OOP
                     Description = selectedCar.Description,
                 };
             }
+            else if (isSportCar)
+            {
+                newCar = new Sportcar
+                {
+                    ID = selectedCar.ID,
+                    Make = selectedCar.Make,
+                    Model = selectedCar.Model,
+                    Year = selectedCar.Year,
+                    HP = selectedCar.HP,
+                    Gear = selectedCar.Gear,
+                    Color = selectedCar.Color,
+                    Price = selectedCar.Price,
+                    Condition = selectedCar.Condition,
+                    Country = selectedCar.Country,
+                    ImagePath = selectedCar.ImagePath,
+                    Description = selectedCar.Description,
+                };
+            }
+            else if (isPickup)
+            {
+                newCar = new Pickup
+                {
+                    ID = selectedCar.ID,
+                    Make = selectedCar.Make,
+                    Model = selectedCar.Model,
+                    Year = selectedCar.Year,
+                    HP = selectedCar.HP,
+                    Gear = selectedCar.Gear,
+                    Color = selectedCar.Color,
+                    Price = selectedCar.Price,
+                    Condition = selectedCar.Condition,
+                    Country = selectedCar.Country,
+                    ImagePath = selectedCar.ImagePath,
+                    Description = selectedCar.Description,
+                };
+            }
             else
             {
                 MessageBox.Show("Invalid car type", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -143,8 +190,16 @@ namespace CourseWork_OOP
             {
                 userBasket.suv.Add(suvCar);
             }
+            else if(newCar is Sportcar sportCar)
+            {
+                userBasket.sportcars.Add(sportCar);
+            }
+            else if(newCar is Pickup pickupCar)
+            {
+                userBasket.pickups.Add(pickupCar);
+            }
 
-            string updatedBasketJson = JsonSerializer.Serialize(userBasket, new JsonSerializerOptions { WriteIndented = true });
+                string updatedBasketJson = JsonSerializer.Serialize(userBasket, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(basketPath, updatedBasketJson);
 
             List<SellerRequest> approvalRequests = new List<SellerRequest>();

@@ -56,6 +56,8 @@
             label3 = new Label();
             label2 = new Label();
             panel3 = new Panel();
+            checkBoxSportcar = new CheckBox();
+            checkBoxPickup = new CheckBox();
             label13 = new Label();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -68,7 +70,7 @@
             button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Unispace", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(62, 79);
+            button1.Location = new Point(62, 172);
             button1.Name = "button1";
             button1.Size = new Size(135, 69);
             button1.TabIndex = 0;
@@ -126,7 +128,7 @@
             checkBoxLightCars.AutoSize = true;
             checkBoxLightCars.Font = new Font("Unispace", 18F, FontStyle.Bold);
             checkBoxLightCars.ForeColor = SystemColors.ControlDark;
-            checkBoxLightCars.Location = new Point(33, 41);
+            checkBoxLightCars.Location = new Point(33, 134);
             checkBoxLightCars.Name = "checkBoxLightCars";
             checkBoxLightCars.Size = new Size(167, 33);
             checkBoxLightCars.TabIndex = 6;
@@ -139,12 +141,13 @@
             checkBoxSUV.AutoSize = true;
             checkBoxSUV.Font = new Font("Unispace", 18F, FontStyle.Bold);
             checkBoxSUV.ForeColor = SystemColors.ControlDark;
-            checkBoxSUV.Location = new Point(120, 3);
+            checkBoxSUV.Location = new Point(120, 17);
             checkBoxSUV.Name = "checkBoxSUV";
             checkBoxSUV.Size = new Size(77, 33);
             checkBoxSUV.TabIndex = 7;
             checkBoxSUV.Text = "SUV";
             checkBoxSUV.UseVisualStyleBackColor = true;
+            checkBoxSUV.CheckedChanged += checkBoxSUV_CheckedChanged;
             // 
             // textBoxDescription
             // 
@@ -363,13 +366,41 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(checkBoxSportcar);
+            panel3.Controls.Add(checkBoxPickup);
             panel3.Controls.Add(checkBoxSUV);
             panel3.Controls.Add(checkBoxLightCars);
             panel3.Controls.Add(button1);
-            panel3.Location = new Point(588, 282);
+            panel3.Location = new Point(588, 190);
             panel3.Name = "panel3";
-            panel3.Size = new Size(200, 152);
+            panel3.Size = new Size(200, 244);
             panel3.TabIndex = 12;
+            // 
+            // checkBoxSportcar
+            // 
+            checkBoxSportcar.AutoSize = true;
+            checkBoxSportcar.Font = new Font("Unispace", 18F, FontStyle.Bold);
+            checkBoxSportcar.ForeColor = SystemColors.ControlDark;
+            checkBoxSportcar.Location = new Point(48, 95);
+            checkBoxSportcar.Name = "checkBoxSportcar";
+            checkBoxSportcar.Size = new Size(152, 33);
+            checkBoxSportcar.TabIndex = 9;
+            checkBoxSportcar.Text = "SPORTCAR";
+            checkBoxSportcar.UseVisualStyleBackColor = true;
+            checkBoxSportcar.CheckedChanged += checkBoxSportcar_CheckedChanged;
+            // 
+            // checkBoxPickup
+            // 
+            checkBoxPickup.AutoSize = true;
+            checkBoxPickup.Font = new Font("Unispace", 18F, FontStyle.Bold);
+            checkBoxPickup.ForeColor = SystemColors.ControlDark;
+            checkBoxPickup.Location = new Point(75, 56);
+            checkBoxPickup.Name = "checkBoxPickup";
+            checkBoxPickup.Size = new Size(122, 33);
+            checkBoxPickup.TabIndex = 8;
+            checkBoxPickup.Text = "PICKUP";
+            checkBoxPickup.UseVisualStyleBackColor = true;
+            checkBoxPickup.CheckedChanged += checkBoxPickup_CheckedChanged;
             // 
             // label13
             // 
@@ -438,5 +469,7 @@
         private Label label11;
         private TextBox textBoxHP;
         private Label label13;
+        private CheckBox checkBoxPickup;
+        private CheckBox checkBoxSportcar;
     }
 }

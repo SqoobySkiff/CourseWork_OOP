@@ -62,6 +62,14 @@ namespace CourseWork_OOP
             {
                 allCars.Add(car);
             }
+            foreach(var car in vehicles.sportcars)
+            {
+                allCars.Add(car);
+            }
+            foreach(var car in vehicles.pickups)
+            {
+                allCars.Add(car);
+            }
         }
 
 
@@ -241,6 +249,16 @@ namespace CourseWork_OOP
             else if (car is LightCars)
             {
                 carPage = new CarPage((LightCars)car, this);
+                carPage.Show();
+            }
+            else if(car is Sportcar)
+            {
+                carPage = new CarPage((Sportcar)car, this);
+                carPage.Show();
+            }
+            else if(car is Pickup)
+            {
+                carPage = new CarPage((Pickup)car, this);
                 carPage.Show();
             }
         }
