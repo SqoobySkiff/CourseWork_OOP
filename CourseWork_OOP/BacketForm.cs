@@ -169,11 +169,16 @@ namespace CourseWork_OOP
 
             int lightCountBefore = basket.lightcars.Count;
             int suvCountBefore = basket.suv.Count;
+            int sportcarCountBefore = basket.sportcars.Count;
+            int pickupCountBefore = basket.pickups.Count;
 
             basket.lightcars.RemoveAll(car => car.ID == carInput.ID);
             basket.suv.RemoveAll(car => car.ID == carInput.ID);
+            basket.sportcars.RemoveAll(car => car.ID == carInput.ID);
+            basket.pickups.RemoveAll(car => car.ID == carInput.ID);
 
-            int totalRemoved = (lightCountBefore - basket.lightcars.Count) + (suvCountBefore - basket.suv.Count);
+            int totalRemoved = (lightCountBefore - basket.lightcars.Count) + (suvCountBefore - basket.suv.Count) + (sportcarCountBefore - basket.sportcars.Count)
+                + (pickupCountBefore - basket.pickups.Count);
 
             if (totalRemoved > 0)
             {

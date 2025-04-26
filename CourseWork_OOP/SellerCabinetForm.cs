@@ -132,7 +132,10 @@ namespace CourseWork_OOP
             {
                 if (File.Exists(car.ImagePath))
                 {
-                    car.Image = Image.FromFile(car.ImagePath);
+                    using (var stream = new FileStream(car.ImagePath, FileMode.Open, FileAccess.Read))
+                    {
+                        car.Image = Image.FromStream(stream);
+                    }
                 }
                 else
                 {
@@ -203,6 +206,20 @@ namespace CourseWork_OOP
         }
         public void UpdateCarVisual(List<BaseCar> list)
         {
+            foreach (Control control in flowLayoutPanelCars.Controls)
+            {
+                if (control is Panel panel)
+                {
+                    foreach (Control innerControl in panel.Controls)
+                    {
+                        if (innerControl is PictureBox pb && pb.Image != null)
+                        {
+                            pb.Image.Dispose();
+                        }
+                    }
+                }
+            }
+
             flowLayoutPanelCars.Controls.Clear();
 
             foreach (var car in list)

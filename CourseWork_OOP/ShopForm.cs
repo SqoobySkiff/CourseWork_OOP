@@ -76,6 +76,20 @@ namespace CourseWork_OOP
 
         private void UpdateCarVisual(List<BaseCar> list)
         {
+            foreach (Control control in flowLayoutPanelContent.Controls)
+            {
+                if (control is Panel panel)
+                {
+                    foreach (Control innerControl in panel.Controls)
+                    {
+                        if (innerControl is PictureBox pictureBox && pictureBox.Image != null)
+                        {
+                            pictureBox.Image.Dispose();
+                        }
+                    }
+                }
+            }
+
             flowLayoutPanelContent.Controls.Clear();
 
             foreach (var car in list)
@@ -155,10 +169,18 @@ namespace CourseWork_OOP
                 AutoSize = true,
                 Location = new Point(520, 120)
             };
+            Image image = null;
             string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, car.ImagePath);
+            if (File.Exists(imagePath))
+            {
+                using (var tempImage = Image.FromFile(imagePath))
+                {
+                    image = new Bitmap(tempImage); 
+                }
+            }
             PictureBox pictureBox = new PictureBox
             {
-                Image = File.Exists(imagePath) ? Image.FromFile(imagePath) : null,
+                Image = image,
                 Location = new Point(250, 20),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 Size = new Size(200, 100)
