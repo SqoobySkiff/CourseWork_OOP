@@ -129,7 +129,7 @@ namespace CourseWork_OOP
             if (checkBoxUser.Checked)
             {
                 checkBoxUser.Checked = false;
-            }
+            }           
         }
 
         private void checkBoxUser_CheckedChanged(object sender, EventArgs e)

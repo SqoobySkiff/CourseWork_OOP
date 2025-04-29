@@ -159,7 +159,7 @@ namespace CourseWork_OOP
                         File.WriteAllText(requesterPath, JsonSerializer.Serialize(basket, new JsonSerializerOptions { WriteIndented = true }));
                     }
                 }
-                approvalRequests.RemoveAll(r => r.CarId == request.CarId && r.RequestedBy == request.RequestedBy);
+                approvalRequests.RemoveAll(r => r.CarId == request.CarId);
 
                 string basketsFolder = @"userBaskets";
                 if (Directory.Exists(basketsFolder))

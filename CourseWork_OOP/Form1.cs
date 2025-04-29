@@ -14,6 +14,11 @@ namespace CourseWork_OOP
             InitializeComponent();
             InitializeForm();
         }
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+            GC.Collect();
+        }
         public void InitializeForm()
         {
             if (!File.Exists(jsonPath))

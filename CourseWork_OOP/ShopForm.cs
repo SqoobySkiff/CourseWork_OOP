@@ -62,11 +62,11 @@ namespace CourseWork_OOP
             {
                 allCars.Add(car);
             }
-            foreach(var car in vehicles.sportcars)
+            foreach (var car in vehicles.sportcars)
             {
                 allCars.Add(car);
             }
-            foreach(var car in vehicles.pickups)
+            foreach (var car in vehicles.pickups)
             {
                 allCars.Add(car);
             }
@@ -175,7 +175,7 @@ namespace CourseWork_OOP
             {
                 using (var tempImage = Image.FromFile(imagePath))
                 {
-                    image = new Bitmap(tempImage); 
+                    image = new Bitmap(tempImage);
                 }
             }
             PictureBox pictureBox = new PictureBox
@@ -265,7 +265,7 @@ namespace CourseWork_OOP
             CarPage carPage;
             if (car is SUV)
             {
-               carPage = new CarPage((SUV)car, this);
+                carPage = new CarPage((SUV)car, this);
                 carPage.Show();
             }
             else if (car is LightCars)
@@ -273,12 +273,12 @@ namespace CourseWork_OOP
                 carPage = new CarPage((LightCars)car, this);
                 carPage.Show();
             }
-            else if(car is Sportcar)
+            else if (car is Sportcar)
             {
                 carPage = new CarPage((Sportcar)car, this);
                 carPage.Show();
             }
-            else if(car is Pickup)
+            else if (car is Pickup)
             {
                 carPage = new CarPage((Pickup)car, this);
                 carPage.Show();
@@ -302,6 +302,11 @@ namespace CourseWork_OOP
             BacketForm backetForm = new BacketForm(this);
             backetForm.Show();
             this.Hide();
+        }
+
+        private void textBoxModel_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

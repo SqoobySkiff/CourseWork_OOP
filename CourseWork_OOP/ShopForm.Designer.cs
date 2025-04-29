@@ -221,6 +221,7 @@
             textBoxModel.Name = "textBoxModel";
             textBoxModel.Size = new Size(97, 23);
             textBoxModel.TabIndex = 16;
+            textBoxModel.TextChanged += textBoxModel_TextChanged;
             // 
             // ShopForm
             // 
