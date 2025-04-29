@@ -17,14 +17,16 @@ namespace CourseWork_OOP
         public List<int> IDIES = new List<int>();
         VehiclesData vehicles;
         public List<BaseCar> allCars = new List<BaseCar>();
+        private Form1 form1;
 
-        public SellerCabinetForm()
+        public SellerCabinetForm(Form1 form)
         {
             InitializeComponent();
             Initialize();
             LoadCarIDs();
             LoadApprovalRequests();
             this.CenterToScreen();
+            form1 = form;
         }
         private void LoadApprovalRequests()
         {
@@ -52,6 +54,10 @@ namespace CourseWork_OOP
 
             foreach (var req in requests)
             {
+                if(req.CarId == 222222)
+                {
+                    continue;
+                }
                 Panel panel = new Panel
                 {
                     Width = 250,
@@ -96,6 +102,8 @@ namespace CourseWork_OOP
                     BackColor = Color.LightGreen,
                     AutoSize = true
                 };
+                buttonApprove.Click += (sender, e) => ApproveRequest(req);
+
                 Button buttonDecline = new Button
                 {
                     Text = "Decline",
@@ -103,6 +111,7 @@ namespace CourseWork_OOP
                     BackColor = Color.Red,
                     AutoSize = true
                 };
+                buttonDecline.Click += (sender, e) => DeclineRequest(req);
 
                 panel.Controls.Add(buttonDecline);
                 panel.Controls.Add(buttonApprove);
@@ -115,10 +124,116 @@ namespace CourseWork_OOP
             }
         }
 
+        private void ApproveRequest(SellerRequest request)
+        {
+            try
+            {
+                if (File.Exists(jsonFilePath))
+                {
+                    var mainJson = File.ReadAllText(jsonFilePath);
+                    var vehiclesData = JsonSerializer.Deserialize<VehiclesData>(mainJson);
+
+                    if (vehiclesData != null)
+                    {
+                        vehiclesData.lightcars.RemoveAll(c => c.ID == request.CarId);
+                        vehiclesData.suv.RemoveAll(c => c.ID == request.CarId);
+                        vehiclesData.sportcars.RemoveAll(c => c.ID == request.CarId);
+                        vehiclesData.pickups.RemoveAll(c => c.ID == request.CarId);
+
+                        File.WriteAllText(jsonFilePath, JsonSerializer.Serialize(vehiclesData, new JsonSerializerOptions { WriteIndented = true }));
+                    }
+                }
+
+                string requesterPath = $@"userBaskets\{request.RequestedBy}_basket.json";
+                if (File.Exists(requesterPath))
+                {
+                    var userJson = File.ReadAllText(requesterPath);
+                    var basket = JsonSerializer.Deserialize<VehiclesData>(userJson);
+                    if (basket != null)
+                    {
+                        basket.lightcars.RemoveAll(c => c.ID == request.CarId);
+                        basket.suv.RemoveAll(c => c.ID == request.CarId);
+                        basket.sportcars.RemoveAll(c => c.ID == request.CarId);
+                        basket.pickups.RemoveAll(c => c.ID == request.CarId);
+
+                        File.WriteAllText(requesterPath, JsonSerializer.Serialize(basket, new JsonSerializerOptions { WriteIndented = true }));
+                    }
+                }
+                approvalRequests.RemoveAll(r => r.CarId == request.CarId && r.RequestedBy == request.RequestedBy);
+
+                string basketsFolder = @"userBaskets";
+                if (Directory.Exists(basketsFolder))
+                {
+                    var basketFiles = Directory.GetFiles(basketsFolder, "*_basket.json");
+
+                    foreach (var file in basketFiles)
+                    {
+                        string user = Path.GetFileName(file).Split('_')[0];
+                        if (user == request.RequestedBy) continue; 
+
+                        var userJson = File.ReadAllText(file);
+                        var basket = JsonSerializer.Deserialize<VehiclesData>(userJson);
+
+                        bool modified = false;
+                        foreach (var car in basket.lightcars) { if (car.ID == request.CarId) { car.ID = 222222; modified = true; } }
+                        foreach (var car in basket.suv) { if (car.ID == request.CarId) { car.ID = 222222; modified = true; } }
+                        foreach (var car in basket.sportcars) { if (car.ID == request.CarId) { car.ID = 222222; modified = true; } }
+                        foreach (var car in basket.pickups) { if (car.ID == request.CarId) { car.ID = 222222; modified = true; } }
+
+                        if (modified)
+                        {
+                            File.WriteAllText(file, JsonSerializer.Serialize(basket, new JsonSerializerOptions { WriteIndented = true }));
+                        }
+                    }
+                }
+                File.WriteAllText(jsonAproveListFilePath, JsonSerializer.Serialize(approvalRequests, new JsonSerializerOptions { WriteIndented = true }));
+
+                LoadApprovalRequests();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error approving request: {ex.Message}");
+            }
+        }
+
+        private void DeclineRequest(SellerRequest request)
+        {
+            try
+            {
+                approvalRequests.RemoveAll(r => r.CarId == request.CarId && r.RequestedBy == request.RequestedBy);
+                File.WriteAllText(jsonAproveListFilePath, JsonSerializer.Serialize(approvalRequests, new JsonSerializerOptions { WriteIndented = true }));
+
+                string userBasketPath = $@"userBaskets\{request.RequestedBy}_basket.json";
+                if (File.Exists(userBasketPath))
+                {
+                    var basketJson = File.ReadAllText(userBasketPath);
+                    var basket = JsonSerializer.Deserialize<VehiclesData>(basketJson);
+
+                    if (basket != null)
+                    {
+                        basket.lightcars.RemoveAll(c => c.ID == request.CarId);
+                        basket.suv.RemoveAll(c => c.ID == request.CarId);
+                        basket.sportcars.RemoveAll(c => c.ID == request.CarId);
+                        basket.pickups.RemoveAll(c => c.ID == request.CarId);
+
+                        File.WriteAllText(userBasketPath, JsonSerializer.Serialize(basket, new JsonSerializerOptions { WriteIndented = true }));
+                    }
+                }
+
+                LoadApprovalRequests();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error while declining request: {ex.Message}");
+            }
+        }
+
+
         private void Initialize()
         {
             this.CenterToScreen();
             flowLayoutPanelCars.AutoScroll = true;
+            flowLayoutPanelOrders.AutoScroll = true;
             if (!File.Exists(jsonFilePath))
             {
                 MessageBox.Show("Cars JSON file not found!");
@@ -181,8 +296,7 @@ namespace CourseWork_OOP
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
-            Form1 form = new Form1();
-            form.Show();
+            form1.Show();
         }
 
         public void CombineCars(VehiclesData vehicles)
@@ -208,6 +322,7 @@ namespace CourseWork_OOP
         {
             foreach (Control control in flowLayoutPanelCars.Controls)
             {
+
                 if (control is Panel panel)
                 {
                     foreach (Control innerControl in panel.Controls)
@@ -219,6 +334,7 @@ namespace CourseWork_OOP
                     }
                 }
             }
+
 
             flowLayoutPanelCars.Controls.Clear();
 
@@ -305,9 +421,18 @@ namespace CourseWork_OOP
                 Location = new Point(300, 120)
             };
             string imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, car.ImagePath);
+            Image img = null;
+            if (File.Exists(imagePath))
+            {
+                using (var tempStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+                {
+                    img = Image.FromStream(tempStream); 
+                }
+            }
+
             PictureBox pictureBox = new PictureBox
             {
-                Image = File.Exists(imagePath) ? Image.FromFile(imagePath) : null,
+                Image = img,
                 Location = new Point(250, 20),
                 SizeMode = PictureBoxSizeMode.Zoom,
                 Size = new Size(150, 100)
@@ -386,6 +511,51 @@ namespace CourseWork_OOP
         private void label3_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            foreach (Control control in flowLayoutPanelCars.Controls)
+            {
+                if (control is Panel panel)
+                {
+                    foreach (Control innerControl in panel.Controls)
+                    {
+                        if (innerControl is PictureBox pb)
+                        {
+                            if (pb.Image != null)
+                            {
+                                pb.Image.Dispose();
+                                pb.Image = null;
+                            }
+                            pb.Dispose();
+                        }
+                    }
+                }
+            }
+
+            foreach (Control control in flowLayoutPanelOrders.Controls)
+            {
+                if (control is Panel panel)
+                {
+                    foreach (Control innerControl in panel.Controls)
+                    {
+                        if (innerControl is PictureBox pb)
+                        {
+                            if (pb.Image != null)
+                            {
+                                pb.Image.Dispose();
+                                pb.Image = null;
+                            }
+                            pb.Dispose();
+                        }
+                    }
+                }
+            }
+
+            flowLayoutPanelCars.Controls.Clear();
+            flowLayoutPanelOrders.Controls.Clear();
         }
     }
 }

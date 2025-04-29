@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -42,7 +43,7 @@ namespace CourseWork_OOP
                 {
                     AddCarPanel(car);
                 }
-    
+
             }
             else
             {
@@ -52,14 +53,39 @@ namespace CourseWork_OOP
 
         public void AddCarPanel(BaseCar car)
         {
-            Panel carPanel = new Panel
+            Panel carPanel;
+            if (car.ID == 222222)
             {
-                Width = 600,
-                Height = 140,
-                BorderStyle = BorderStyle.FixedSingle,
-                Margin = new Padding(10),
-                BackColor = Color.White,
-            };
+                carPanel = new Panel
+                {
+                    Width = 600,
+                    Height = 140,
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Margin = new Padding(10),
+                    BackColor = Color.Red,
+                };
+            }
+            else
+            {
+                carPanel = new Panel
+                {
+                    Width = 600,
+                    Height = 140,
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Margin = new Padding(10),
+                    BackColor = Color.White,
+                };
+                Button buttonDelete = new Button
+                {
+                    Text = "Decline order",
+                    Location = new Point(460, 70),
+                    Size = new Size(100, 50),
+                    BackColor = Color.LightGray
+                };
+                buttonDelete.Click += (sender, e) => DeleteCarFromBascket(car);
+                carPanel.Controls.Add(buttonDelete);
+            }
+
 
             Label lblMake = new Label
             {
@@ -126,14 +152,6 @@ namespace CourseWork_OOP
                 SizeMode = PictureBoxSizeMode.Zoom,
                 Size = new Size(200, 100)
             };
-            Button buttonDelete = new Button
-            {
-                Text = "Decline order",
-                Location = new Point(460, 70),
-                Size = new Size(100, 50),
-                BackColor = Color.LightGray
-            };
-            buttonDelete.Click += (sender, e) => DeleteCarFromBascket(car);
 
             carPanel.Controls.Add(lblMake);
             carPanel.Controls.Add(lblModel);
@@ -142,7 +160,6 @@ namespace CourseWork_OOP
             carPanel.Controls.Add(lblPrice);
             carPanel.Controls.Add(pictureBox);
             carPanel.Controls.Add(lblCountry);
-            carPanel.Controls.Add(buttonDelete);
             carPanel.Controls.Add(lblGear);
             carPanel.Controls.Add(lblHP);
 

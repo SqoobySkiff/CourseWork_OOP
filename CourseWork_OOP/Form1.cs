@@ -58,7 +58,7 @@ namespace CourseWork_OOP
             {
                 if (login_password.Text == user.Password && login_username.Text == user.Login)
                 {
-                    SellerCabinetForm sellerForm = new SellerCabinetForm();
+                    SellerCabinetForm sellerForm = new SellerCabinetForm(this);
                     sellerForm.Show();
                     this.Hide();
                     return;
