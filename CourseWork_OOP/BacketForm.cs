@@ -246,5 +246,10 @@ namespace CourseWork_OOP
             }
 
         }
+
+        private void flowLayoutPanelBacket_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

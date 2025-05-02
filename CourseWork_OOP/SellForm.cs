@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CourseWork_OOP
 {
-    public partial class SellForm : Form
+    public partial class SellForm : Form, IComboBoxes
     {
         //private ShopForm mainForm;
 
@@ -30,15 +30,7 @@ namespace CourseWork_OOP
             this.IDIES = IDIES;
             this.rnd = new Random();
             this.CenterToScreen();
-
-            comboBoxCondition.Items.Add("New");
-            comboBoxCondition.Items.Add("Used");
-            comboBoxCountry.Items.Add("Homemade");
-            comboBoxCountry.Items.Add("Foregin");
-
-            comboBoxGear.Items.Add("Automatic");
-            comboBoxGear.Items.Add("Manual");
-            comboBoxGear.Items.Add("HalfAuto");
+            InitializeComboBox();
         }
 
         private void InitializeDragDrop()
@@ -270,6 +262,18 @@ namespace CourseWork_OOP
             checkBoxSportcar.Checked = false;
             checkBoxLightCars.Checked = false;
             checkBoxPickup.Checked = false;
+        }
+
+        public void InitializeComboBox()
+        {
+            comboBoxCondition.Items.Add("New");
+            comboBoxCondition.Items.Add("Used");
+            comboBoxCountry.Items.Add("Homemade");
+            comboBoxCountry.Items.Add("Foregin");
+
+            comboBoxGear.Items.Add("Automatic");
+            comboBoxGear.Items.Add("Manual");
+            comboBoxGear.Items.Add("HalfAuto");
         }
     }
 }

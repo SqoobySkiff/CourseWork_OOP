@@ -39,6 +39,7 @@
             flowLayoutPanelBacket.Name = "flowLayoutPanelBacket";
             flowLayoutPanelBacket.Size = new Size(776, 391);
             flowLayoutPanelBacket.TabIndex = 0;
+            flowLayoutPanelBacket.Paint += flowLayoutPanelBacket_Paint;
             // 
             // labelReturn
             // 

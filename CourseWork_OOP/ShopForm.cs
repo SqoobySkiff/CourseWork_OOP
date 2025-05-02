@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace CourseWork_OOP
 {
-    public partial class ShopForm : Form, IControls
+    public partial class ShopForm : Form, IControls, IComboBoxes
     {
         private string jsonFilePath = @"dataBase\cars.json";
         VehiclesData vehicles;
@@ -22,6 +22,7 @@ namespace CourseWork_OOP
         {
             InitializeComponent();
             InitializeForm();
+            InitializeComboBox();
         }
         private void InitializeForm()
         {
@@ -225,19 +226,63 @@ namespace CourseWork_OOP
         {
             tempCarList = new List<BaseCar>();
 
-            int fromPrice = string.IsNullOrWhiteSpace(textBoxFrom.Text) ? 0 : Convert.ToInt32(textBoxFrom.Text);
-            int toPrice = string.IsNullOrWhiteSpace(textBoxTo.Text) ? int.MaxValue : Convert.ToInt32(textBoxTo.Text);
+            int fromPrice = 0;
+            int toPrice = int.MaxValue;
+            int fromYear = 0;
+            int toYear = int.MaxValue;
+
+            if (!string.IsNullOrWhiteSpace(textBoxFrom.Text) && !int.TryParse(textBoxFrom.Text, out fromPrice))
+            {
+                MessageBox.Show("Enter propper 'price from'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(textBoxTo.Text) && !int.TryParse(textBoxTo.Text, out toPrice))
+            {
+                MessageBox.Show("Enter propper 'price to' ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(textBoxFromYear.Text) && !int.TryParse(textBoxFromYear.Text, out fromYear))
+            {
+                MessageBox.Show("Enter propper 'year from' ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(textBoxToYear.Text) && !int.TryParse(textBoxToYear.Text, out toYear))
+            {
+                MessageBox.Show("Enter propper 'year to' ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             foreach (var car in allCars)
             {
+                if (!string.IsNullOrWhiteSpace(comboBoxType.Text) && CheckType(car) is false)
+                    continue;
+
                 if (!string.IsNullOrWhiteSpace(textBoxMake.Text) && !car.Make.Contains(textBoxMake.Text, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                if (!string.IsNullOrWhiteSpace(comboBoxCondition.Text) && !car.Condition.Contains(comboBoxCondition.Text, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                if (!string.IsNullOrWhiteSpace(comboBoxCountry.Text) && !car.Country.Contains(comboBoxCountry.Text, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                if (!string.IsNullOrWhiteSpace(comboBoxGear.Text) && !car.Gear.Contains(comboBoxGear.Text, StringComparison.OrdinalIgnoreCase))
                     continue;
 
                 if (!string.IsNullOrWhiteSpace(textBoxModel.Text) && !car.Model.Contains(textBoxModel.Text, StringComparison.OrdinalIgnoreCase))
                     continue;
 
+                if(!string.IsNullOrWhiteSpace(textBoxColor.Text) && !car.Color.Contains(textBoxColor.Text, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
                 if (FindByPriceMath(car, fromPrice, toPrice) is false)
                     continue;
+
+                if(FindByYearMath(car, fromYear, toYear) is false)
+                continue;
 
                 tempCarList.Add(car);
             }
@@ -245,19 +290,46 @@ namespace CourseWork_OOP
             UpdateCarVisual(tempCarList);
         }
 
+        private bool FindByYearMath(BaseCar car, int fromYear, int toYear)
+        {
+            return car.Year >= fromYear && car.Year <= toYear;
+        }
+
+        private bool CheckType(BaseCar car)
+        {
+            string type = comboBoxType.Text;
+            if (type.ToLower() == car.GetType().Name.ToLower())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private void buttonClearSearchSettings_Click_1(object sender, EventArgs e)
         {
             UpdateCarVisual(allCars);
+            comboBoxGear.SelectedIndex = 0;
+            comboBoxCondition.SelectedIndex = 0;
+            comboBoxCountry.SelectedIndex = 0;
+            comboBoxType.SelectedIndex = 0;
             textBoxFrom.Text = "";
             textBoxTo.Text = "";
             textBoxMake.Text = "";
             textBoxModel.Text = "";
+            textBoxFromYear.Text = "";
+            textBoxToYear.Text = "";
+            textBoxColor.Text = "";
         }
 
         public bool FindByPriceMath(BaseCar car, int from, int to)
         {
             return car.Price >= from && car.Price <= to;
         }
+
+
 
         private void OpenCarPage(BaseCar car)
         {
@@ -307,6 +379,28 @@ namespace CourseWork_OOP
         private void textBoxModel_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public void InitializeComboBox()
+        {
+            comboBoxType.Items.Add("");
+            comboBoxType.Items.Add("LightCars");
+            comboBoxType.Items.Add("Pickup");
+            comboBoxType.Items.Add("Sportcar");
+            comboBoxType.Items.Add("Suv");
+
+            comboBoxCondition.Items.Add("");
+            comboBoxCondition.Items.Add("New");
+            comboBoxCondition.Items.Add("Used");
+
+            comboBoxCountry.Items.Add("");
+            comboBoxCountry.Items.Add("Homemade");
+            comboBoxCountry.Items.Add("Foregin");
+
+            comboBoxGear.Items.Add("");
+            comboBoxGear.Items.Add("Automatic");
+            comboBoxGear.Items.Add("Manual");
+            comboBoxGear.Items.Add("HalfAuto");
         }
     }
 }
