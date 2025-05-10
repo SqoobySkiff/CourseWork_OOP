@@ -37,7 +37,7 @@ namespace CourseWork_OOP
                 string json = File.ReadAllText(basketPath);
                 vehicles = JsonSerializer.Deserialize<VehiclesData>(json);
                 allCars = new List<BaseCar>();
-                CombineCars(vehicles);
+                allCars = vehicles.CombineCars();
 
                 foreach (var car in allCars)
                 {
@@ -225,26 +225,6 @@ namespace CourseWork_OOP
         {
             ShopForm.Show();
             this.Close();
-        }
-        public void CombineCars(VehiclesData vehicles)
-        {
-            foreach (var car in vehicles.lightcars)
-            {
-                allCars.Add(car);
-            }
-            foreach (var car in vehicles.suv)
-            {
-                allCars.Add(car);
-            }
-            foreach (var car in vehicles.sportcars)
-            {
-                allCars.Add(car);
-            }
-            foreach (var car in vehicles.pickups)
-            {
-                allCars.Add(car);
-            }
-
         }
 
         private void flowLayoutPanelBacket_Paint(object sender, PaintEventArgs e)

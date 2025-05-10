@@ -242,7 +242,7 @@ namespace CourseWork_OOP
             string jsonText = File.ReadAllText(jsonFilePath);
             vehicles = JsonSerializer.Deserialize<VehiclesData>(jsonText);
             allCars = new List<BaseCar>();
-            CombineCars(vehicles);
+            allCars = vehicles.CombineCars();
             foreach (var car in allCars)
             {
                 if (File.Exists(car.ImagePath))
@@ -297,26 +297,6 @@ namespace CourseWork_OOP
         {
             this.Close();
             form1.Show();
-        }
-
-        public void CombineCars(VehiclesData vehicles)
-        {
-            foreach (var car in vehicles.lightcars)
-            {
-                allCars.Add(car);
-            }
-            foreach (var car in vehicles.suv)
-            {
-                allCars.Add(car);
-            }
-            foreach (var car in vehicles.pickups)
-            {
-                allCars.Add(car);
-            }
-            foreach (var car in vehicles.sportcars)
-            {
-                allCars.Add(car);
-            }
         }
         public void UpdateCarVisual(List<BaseCar> list)
         {

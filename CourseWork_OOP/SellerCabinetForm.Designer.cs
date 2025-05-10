@@ -43,6 +43,7 @@
             // 
             // button1
             // 
+            button1.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
             button1.Location = new Point(319, 103);
             button1.Name = "button1";
             button1.Size = new Size(185, 63);
@@ -53,7 +54,8 @@
             // 
             // button2
             // 
-            button2.Location = new Point(548, 3);
+            button2.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
+            button2.Location = new Point(529, 3);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 1;
@@ -99,9 +101,10 @@
             // 
             // buttonRefresh
             // 
-            buttonRefresh.Location = new Point(629, 3);
+            buttonRefresh.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
+            buttonRefresh.Location = new Point(610, 3);
             buttonRefresh.Name = "buttonRefresh";
-            buttonRefresh.Size = new Size(101, 23);
+            buttonRefresh.Size = new Size(152, 23);
             buttonRefresh.TabIndex = 5;
             buttonRefresh.Text = "Refresh Request";
             buttonRefresh.UseVisualStyleBackColor = true;
@@ -109,9 +112,10 @@
             // 
             // button3
             // 
+            button3.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
             button3.Location = new Point(117, 143);
             button3.Name = "button3";
-            button3.Size = new Size(96, 23);
+            button3.Size = new Size(112, 23);
             button3.TabIndex = 4;
             button3.Text = "Search by ID";
             button3.UseVisualStyleBackColor = true;

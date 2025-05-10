@@ -10,7 +10,6 @@ namespace CourseWork_OOP
     {
         public Seller()
         {
-
         }
     }
 }

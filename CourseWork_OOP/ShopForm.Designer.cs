@@ -44,6 +44,14 @@
             panel2 = new Panel();
             pictureBoxBacket = new PictureBox();
             panel3 = new Panel();
+            panel5 = new Panel();
+            label15 = new Label();
+            label16 = new Label();
+            label17 = new Label();
+            textBoxFromHP = new TextBox();
+            textBoxToHP = new TextBox();
+            label14 = new Label();
+            textBoxColor = new TextBox();
             panel4 = new Panel();
             label10 = new Label();
             label11 = new Label();
@@ -61,13 +69,12 @@
             label5 = new Label();
             label4 = new Label();
             textBoxModel = new TextBox();
-            textBoxColor = new TextBox();
             backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            label14 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxBacket).BeginInit();
             panel3.SuspendLayout();
+            panel5.SuspendLayout();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
@@ -76,9 +83,9 @@
             flowLayoutPanelContent.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanelContent.BackColor = Color.FromArgb(33, 11, 97);
             flowLayoutPanelContent.BorderStyle = BorderStyle.FixedSingle;
-            flowLayoutPanelContent.Location = new Point(0, 121);
+            flowLayoutPanelContent.Location = new Point(0, 141);
             flowLayoutPanelContent.Name = "flowLayoutPanelContent";
-            flowLayoutPanelContent.Size = new Size(758, 330);
+            flowLayoutPanelContent.Size = new Size(758, 310);
             flowLayoutPanelContent.TabIndex = 9;
             // 
             // label3
@@ -137,7 +144,7 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(textBoxTo);
             panel1.Controls.Add(textBoxFrom);
-            panel1.Location = new Point(553, 18);
+            panel1.Location = new Point(564, 32);
             panel1.Name = "panel1";
             panel1.Size = new Size(176, 71);
             panel1.TabIndex = 12;
@@ -209,7 +216,7 @@
             panel2.Controls.Add(buttonClearSearchSettings);
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(758, 125);
+            panel2.Size = new Size(758, 141);
             panel2.TabIndex = 16;
             // 
             // pictureBoxBacket
@@ -225,6 +232,7 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(224, 224, 224);
+            panel3.Controls.Add(panel5);
             panel3.Controls.Add(label14);
             panel3.Controls.Add(textBoxColor);
             panel3.Controls.Add(panel4);
@@ -241,10 +249,90 @@
             panel3.Controls.Add(textBoxModel);
             panel3.Controls.Add(textBoxMake);
             panel3.Controls.Add(panel1);
-            panel3.Location = new Point(12, 30);
+            panel3.Location = new Point(3, 33);
             panel3.Name = "panel3";
-            panel3.Size = new Size(734, 92);
+            panel3.Size = new Size(743, 105);
             panel3.TabIndex = 16;
+            // 
+            // panel5
+            // 
+            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panel5.BackColor = Color.LightGray;
+            panel5.Controls.Add(label15);
+            panel5.Controls.Add(label16);
+            panel5.Controls.Add(label17);
+            panel5.Controls.Add(textBoxFromHP);
+            panel5.Controls.Add(textBoxToHP);
+            panel5.Location = new Point(266, 0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(144, 59);
+            panel5.TabIndex = 14;
+            // 
+            // label15
+            // 
+            label15.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label15.AutoSize = true;
+            label15.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
+            label15.Location = new Point(61, 3);
+            label15.Name = "label15";
+            label15.Size = new Size(23, 15);
+            label15.TabIndex = 9;
+            label15.Text = "HP";
+            // 
+            // label16
+            // 
+            label16.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label16.AutoSize = true;
+            label16.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
+            label16.Location = new Point(78, 20);
+            label16.Name = "label16";
+            label16.Size = new Size(31, 15);
+            label16.TabIndex = 7;
+            label16.Text = "TO:";
+            // 
+            // label17
+            // 
+            label17.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label17.AutoSize = true;
+            label17.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
+            label17.Location = new Point(9, 20);
+            label17.Name = "label17";
+            label17.Size = new Size(47, 15);
+            label17.TabIndex = 6;
+            label17.Text = "FROM:";
+            // 
+            // textBoxFromHP
+            // 
+            textBoxFromHP.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            textBoxFromHP.Location = new Point(9, 35);
+            textBoxFromHP.Name = "textBoxFromHP";
+            textBoxFromHP.Size = new Size(63, 23);
+            textBoxFromHP.TabIndex = 5;
+            // 
+            // textBoxToHP
+            // 
+            textBoxToHP.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            textBoxToHP.Location = new Point(78, 35);
+            textBoxToHP.Name = "textBoxToHP";
+            textBoxToHP.Size = new Size(48, 23);
+            textBoxToHP.TabIndex = 4;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
+            label14.Location = new Point(213, 4);
+            label14.Name = "label14";
+            label14.Size = new Size(47, 15);
+            label14.TabIndex = 28;
+            label14.Text = "Color";
+            // 
+            // textBoxColor
+            // 
+            textBoxColor.Location = new Point(213, 20);
+            textBoxColor.Name = "textBoxColor";
+            textBoxColor.Size = new Size(51, 23);
+            textBoxColor.TabIndex = 27;
             // 
             // panel4
             // 
@@ -255,9 +343,9 @@
             panel4.Controls.Add(label12);
             panel4.Controls.Add(textBoxToYear);
             panel4.Controls.Add(textBoxFromYear);
-            panel4.Location = new Point(385, 18);
+            panel4.Location = new Point(411, 34);
             panel4.Name = "panel4";
-            panel4.Size = new Size(166, 71);
+            panel4.Size = new Size(147, 68);
             panel4.TabIndex = 13;
             // 
             // label10
@@ -265,7 +353,7 @@
             label10.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label10.AutoSize = true;
             label10.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
-            label10.Location = new Point(60, 8);
+            label10.Location = new Point(54, 8);
             label10.Name = "label10";
             label10.Size = new Size(39, 15);
             label10.TabIndex = 9;
@@ -276,7 +364,7 @@
             label11.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label11.AutoSize = true;
             label11.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
-            label11.Location = new Point(86, 27);
+            label11.Location = new Point(95, 25);
             label11.Name = "label11";
             label11.Size = new Size(31, 15);
             label11.TabIndex = 7;
@@ -287,7 +375,7 @@
             label12.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label12.AutoSize = true;
             label12.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
-            label12.Location = new Point(3, 27);
+            label12.Location = new Point(9, 25);
             label12.Name = "label12";
             label12.Size = new Size(47, 15);
             label12.TabIndex = 6;
@@ -296,24 +384,24 @@
             // textBoxToYear
             // 
             textBoxToYear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            textBoxToYear.Location = new Point(86, 45);
+            textBoxToYear.Location = new Point(78, 43);
             textBoxToYear.Name = "textBoxToYear";
-            textBoxToYear.Size = new Size(76, 23);
+            textBoxToYear.Size = new Size(67, 23);
             textBoxToYear.TabIndex = 5;
             // 
             // textBoxFromYear
             // 
             textBoxFromYear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            textBoxFromYear.Location = new Point(3, 44);
+            textBoxFromYear.Location = new Point(5, 42);
             textBoxFromYear.Name = "textBoxFromYear";
-            textBoxFromYear.Size = new Size(80, 23);
+            textBoxFromYear.Size = new Size(67, 23);
             textBoxFromYear.TabIndex = 4;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
-            label9.Location = new Point(287, 46);
+            label9.Location = new Point(287, 62);
             label9.Name = "label9";
             label9.Size = new Size(63, 15);
             label9.TabIndex = 26;
@@ -322,7 +410,7 @@
             // comboBoxCountry
             // 
             comboBoxCountry.FormattingEnabled = true;
-            comboBoxCountry.Location = new Point(287, 61);
+            comboBoxCountry.Location = new Point(287, 77);
             comboBoxCountry.Name = "comboBoxCountry";
             comboBoxCountry.Size = new Size(92, 23);
             comboBoxCountry.TabIndex = 25;
@@ -331,7 +419,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
-            label8.Location = new Point(195, 46);
+            label8.Location = new Point(195, 62);
             label8.Name = "label8";
             label8.Size = new Size(39, 15);
             label8.TabIndex = 24;
@@ -340,7 +428,7 @@
             // comboBoxGear
             // 
             comboBoxGear.FormattingEnabled = true;
-            comboBoxGear.Location = new Point(195, 61);
+            comboBoxGear.Location = new Point(195, 77);
             comboBoxGear.Name = "comboBoxGear";
             comboBoxGear.Size = new Size(89, 23);
             comboBoxGear.TabIndex = 23;
@@ -349,7 +437,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
-            label7.Location = new Point(110, 46);
+            label7.Location = new Point(110, 62);
             label7.Name = "label7";
             label7.Size = new Size(79, 15);
             label7.TabIndex = 22;
@@ -358,7 +446,7 @@
             // comboBoxCondition
             // 
             comboBoxCondition.FormattingEnabled = true;
-            comboBoxCondition.Location = new Point(110, 61);
+            comboBoxCondition.Location = new Point(110, 77);
             comboBoxCondition.Name = "comboBoxCondition";
             comboBoxCondition.Size = new Size(79, 23);
             comboBoxCondition.TabIndex = 21;
@@ -367,7 +455,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
-            label6.Location = new Point(3, 46);
+            label6.Location = new Point(3, 62);
             label6.Name = "label6";
             label6.Size = new Size(39, 15);
             label6.TabIndex = 20;
@@ -376,7 +464,7 @@
             // comboBoxType
             // 
             comboBoxType.FormattingEnabled = true;
-            comboBoxType.Location = new Point(3, 61);
+            comboBoxType.Location = new Point(3, 77);
             comboBoxType.Name = "comboBoxType";
             comboBoxType.Size = new Size(102, 23);
             comboBoxType.TabIndex = 19;
@@ -385,7 +473,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
-            label5.Location = new Point(136, 4);
+            label5.Location = new Point(110, 3);
             label5.Name = "label5";
             label5.Size = new Size(47, 15);
             label5.TabIndex = 18;
@@ -395,7 +483,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Unispace", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(31, 4);
+            label4.Location = new Point(3, 4);
             label4.Name = "label4";
             label4.Size = new Size(39, 15);
             label4.TabIndex = 17;
@@ -403,28 +491,11 @@
             // 
             // textBoxModel
             // 
-            textBoxModel.Location = new Point(114, 21);
+            textBoxModel.Location = new Point(110, 21);
             textBoxModel.Name = "textBoxModel";
             textBoxModel.Size = new Size(97, 23);
             textBoxModel.TabIndex = 16;
             textBoxModel.TextChanged += textBoxModel_TextChanged;
-            // 
-            // textBoxColor
-            // 
-            textBoxColor.Location = new Point(217, 20);
-            textBoxColor.Name = "textBoxColor";
-            textBoxColor.Size = new Size(82, 23);
-            textBoxColor.TabIndex = 27;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
-            label14.Location = new Point(217, 4);
-            label14.Name = "label14";
-            label14.Size = new Size(47, 15);
-            label14.TabIndex = 28;
-            label14.Text = "Color";
             // 
             // ShopForm
             // 
@@ -445,6 +516,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxBacket).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ResumeLayout(false);
@@ -488,5 +561,12 @@
         private Label label14;
         private TextBox textBoxColor;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private TextBox textBox1;
+        private Panel panel5;
+        private Label label15;
+        private Label label16;
+        private Label label17;
+        private TextBox textBoxFromHP;
+        private TextBox textBoxToHP;
     }
 }

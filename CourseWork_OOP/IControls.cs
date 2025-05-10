@@ -8,7 +8,6 @@ namespace CourseWork_OOP
 {
     public interface IControls
     {
-        void CombineCars(VehiclesData vehicles);
         void AddCarPanel(BaseCar car);
     }
 }

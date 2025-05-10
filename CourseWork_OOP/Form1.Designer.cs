@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            buttonCreateAccount = new Button();
             label6 = new Label();
             pictureBox1 = new PictureBox();
             exit = new Label();
@@ -38,7 +39,6 @@
             login_password = new TextBox();
             label4 = new Label();
             login_btn = new Button();
-            buttonCreateAccount = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -55,6 +55,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(389, 450);
             panel1.TabIndex = 0;
+            // 
+            // buttonCreateAccount
+            // 
+            buttonCreateAccount.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
+            buttonCreateAccount.Location = new Point(117, 378);
+            buttonCreateAccount.Name = "buttonCreateAccount";
+            buttonCreateAccount.Size = new Size(127, 23);
+            buttonCreateAccount.TabIndex = 9;
+            buttonCreateAccount.Text = "Create Account";
+            buttonCreateAccount.UseVisualStyleBackColor = true;
+            buttonCreateAccount.Click += buttonCreateAccount_Click;
             // 
             // label6
             // 
@@ -150,16 +161,6 @@
             login_btn.Text = "LOGIN";
             login_btn.UseVisualStyleBackColor = false;
             login_btn.Click += login_btn_Click;
-            // 
-            // buttonCreateAccount
-            // 
-            buttonCreateAccount.Location = new Point(117, 378);
-            buttonCreateAccount.Name = "buttonCreateAccount";
-            buttonCreateAccount.Size = new Size(127, 23);
-            buttonCreateAccount.TabIndex = 9;
-            buttonCreateAccount.Text = "Create Account";
-            buttonCreateAccount.UseVisualStyleBackColor = true;
-            buttonCreateAccount.Click += buttonCreateAccount_Click;
             // 
             // Form1
             // 

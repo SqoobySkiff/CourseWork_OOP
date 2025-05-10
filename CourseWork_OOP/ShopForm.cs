@@ -38,7 +38,7 @@ namespace CourseWork_OOP
             string jsonText = File.ReadAllText(jsonFilePath);
             vehicles = JsonSerializer.Deserialize<VehiclesData>(jsonText);
             allCars = new List<BaseCar>();
-            CombineCars(vehicles);
+            allCars = vehicles.CombineCars();
             foreach (var car in allCars)
             {
                 if (File.Exists(car.ImagePath))
@@ -52,28 +52,6 @@ namespace CourseWork_OOP
             }
             UpdateCarVisual(allCars);
         }
-
-        public void CombineCars(VehiclesData vehicles)
-        {
-            foreach (var car in vehicles.lightcars)
-            {
-                allCars.Add(car);
-            }
-            foreach (var car in vehicles.suv)
-            {
-                allCars.Add(car);
-            }
-            foreach (var car in vehicles.sportcars)
-            {
-                allCars.Add(car);
-            }
-            foreach (var car in vehicles.pickups)
-            {
-                allCars.Add(car);
-            }
-        }
-
-
 
         private void UpdateCarVisual(List<BaseCar> list)
         {
@@ -228,8 +206,21 @@ namespace CourseWork_OOP
 
             int fromPrice = 0;
             int toPrice = int.MaxValue;
+            int fromHP = 0;
+            int toHP = int.MaxValue;
             int fromYear = 0;
             int toYear = int.MaxValue;
+
+            if(!string.IsNullOrWhiteSpace(textBoxFromHP.Text) && !int.TryParse(textBoxFromHP.Text, out fromHP))
+            {
+                MessageBox.Show("Enter propper 'HP from' ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(textBoxToHP.Text) && !int.TryParse(textBoxToHP.Text, out toHP))
+            {
+                MessageBox.Show("Enter propper 'HP to' ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (!string.IsNullOrWhiteSpace(textBoxFrom.Text) && !int.TryParse(textBoxFrom.Text, out fromPrice))
             {
@@ -275,14 +266,15 @@ namespace CourseWork_OOP
                 if (!string.IsNullOrWhiteSpace(textBoxModel.Text) && !car.Model.Contains(textBoxModel.Text, StringComparison.OrdinalIgnoreCase))
                     continue;
 
-                if(!string.IsNullOrWhiteSpace(textBoxColor.Text) && !car.Color.Contains(textBoxColor.Text, StringComparison.OrdinalIgnoreCase))
+                if (!string.IsNullOrWhiteSpace(textBoxColor.Text) && !car.Color.Contains(textBoxColor.Text, StringComparison.OrdinalIgnoreCase))
                     continue;
 
                 if (FindByPriceMath(car, fromPrice, toPrice) is false)
                     continue;
-
-                if(FindByYearMath(car, fromYear, toYear) is false)
-                continue;
+                if (FindByYearMath(car, fromYear, toYear) is false)
+                    continue;
+                if (FindByHPMath(car, fromHP, toHP) is false)
+                    continue;
 
                 tempCarList.Add(car);
             }
@@ -293,6 +285,11 @@ namespace CourseWork_OOP
         private bool FindByYearMath(BaseCar car, int fromYear, int toYear)
         {
             return car.Year >= fromYear && car.Year <= toYear;
+        }
+
+        private bool FindByHPMath(BaseCar car, int fromHP, int toHP)
+        {
+            return car.HP >= fromHP && car.HP <= toHP;
         }
 
         private bool CheckType(BaseCar car)
@@ -322,14 +319,14 @@ namespace CourseWork_OOP
             textBoxFromYear.Text = "";
             textBoxToYear.Text = "";
             textBoxColor.Text = "";
+            textBoxFromHP.Text = "";
+            textBoxToHP.Text = "";
         }
 
         public bool FindByPriceMath(BaseCar car, int from, int to)
         {
             return car.Price >= from && car.Price <= to;
         }
-
-
 
         private void OpenCarPage(BaseCar car)
         {
@@ -401,6 +398,11 @@ namespace CourseWork_OOP
             comboBoxGear.Items.Add("Automatic");
             comboBoxGear.Items.Add("Manual");
             comboBoxGear.Items.Add("HalfAuto");
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

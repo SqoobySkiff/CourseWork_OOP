@@ -123,6 +123,7 @@
             // 
             // buttonBuy
             // 
+            buttonBuy.Font = new Font("Unispace", 9.749999F, FontStyle.Bold);
             buttonBuy.Location = new Point(583, 261);
             buttonBuy.Name = "buttonBuy";
             buttonBuy.Size = new Size(112, 59);
