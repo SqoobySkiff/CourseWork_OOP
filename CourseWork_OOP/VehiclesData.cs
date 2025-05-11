@@ -34,5 +34,31 @@ namespace CourseWork_OOP
             }
             return allCars;
         }
+        public List<BaseCar> FindByID(int id)
+        {
+            List<BaseCar> idCars = new List<BaseCar>();
+            foreach (var car in lightcars)
+            {
+                if (car.ID == id)
+                idCars.Add(car);
+            }
+            foreach (var car in suv)
+            {
+                if (car.ID == id)
+                    idCars.Add(car);
+            }
+            foreach (var car in pickups)
+            {
+                if (car.ID == id)
+                    idCars.Add(car);
+            }
+            foreach (var car in sportcars)
+            {
+                if (car.ID == id)
+                    idCars.Add(car);
+            }
+            return idCars;
+        }
+
     }
 }

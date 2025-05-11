@@ -135,6 +135,16 @@ namespace CourseWork_OOP
 
                     if (vehiclesData != null)
                     {
+                        Receipt receipt = new Receipt();
+                        var carList = vehicles.FindByID(request.CarId);
+                        if (carList == null || carList.Count == 0)
+                        {
+                            MessageBox.Show("Car not found.");
+                            return;
+                        }
+                        BaseCar car = carList[0];
+                        receipt.CreateReceipt(request, car);
+
                         vehiclesData.lightcars.RemoveAll(c => c.ID == request.CarId);
                         vehiclesData.suv.RemoveAll(c => c.ID == request.CarId);
                         vehiclesData.sportcars.RemoveAll(c => c.ID == request.CarId);
@@ -315,7 +325,6 @@ namespace CourseWork_OOP
                 }
             }
 
-
             flowLayoutPanelCars.Controls.Clear();
 
             foreach (var car in list)
@@ -455,7 +464,8 @@ namespace CourseWork_OOP
 
             if (isNumber)
             {
-                SearchByID(result);
+                tempID = vehicles.FindByID(result);
+                //SearchByID(result);
                 if (tempID.Count == 1)
                 {
                     UpdateCarVisual(tempID);
@@ -471,17 +481,17 @@ namespace CourseWork_OOP
             }
         }
 
-        private void SearchByID(int id)
-        {
-            foreach (var car in allCars)
-            {
-                if (car.ID == id)
-                {
-                    tempID.Add(car);
-                    break;
-                }
-            }
-        }
+        //private void SearchByID(int id)
+        //{
+        //    foreach (var car in allCars)
+        //    {
+        //        if (car.ID == id)
+        //        {
+        //            tempID.Add(car);
+        //            break;
+        //        }
+        //    }
+        //}
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
