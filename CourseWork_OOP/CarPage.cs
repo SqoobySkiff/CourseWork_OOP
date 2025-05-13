@@ -181,23 +181,7 @@ namespace CourseWork_OOP
             {
                 userBasket = new VehiclesData();
             }
-
-            if (newCar is LightCars lightCar)
-            {
-                userBasket.lightcars.Add(lightCar);
-            }
-            else if (newCar is SUV suvCar)
-            {
-                userBasket.suv.Add(suvCar);
-            }
-            else if(newCar is Sportcar sportCar)
-            {
-                userBasket.sportcars.Add(sportCar);
-            }
-            else if(newCar is Pickup pickupCar)
-            {
-                userBasket.pickups.Add(pickupCar);
-            }
+            userBasket.AddCarToCollection(newCar);
 
                 string updatedBasketJson = JsonSerializer.Serialize(userBasket, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(basketPath, updatedBasketJson);

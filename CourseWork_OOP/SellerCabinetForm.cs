@@ -136,7 +136,7 @@ namespace CourseWork_OOP
                     if (vehiclesData != null)
                     {
                         Receipt receipt = new Receipt();
-                        var carList = vehicles.FindByID(request.CarId);
+                        var carList = vehiclesData.FindByID(request.CarId);
                         if (carList == null || carList.Count == 0)
                         {
                             MessageBox.Show("Car not found.");
@@ -144,11 +144,7 @@ namespace CourseWork_OOP
                         }
                         BaseCar car = carList[0];
                         receipt.CreateReceipt(request, car);
-
-                        vehiclesData.lightcars.RemoveAll(c => c.ID == request.CarId);
-                        vehiclesData.suv.RemoveAll(c => c.ID == request.CarId);
-                        vehiclesData.sportcars.RemoveAll(c => c.ID == request.CarId);
-                        vehiclesData.pickups.RemoveAll(c => c.ID == request.CarId);
+                        vehiclesData.RemoveCarFromCollection(request.CarId);
 
                         File.WriteAllText(jsonFilePath, JsonSerializer.Serialize(vehiclesData, new JsonSerializerOptions { WriteIndented = true }));
                     }
@@ -161,11 +157,7 @@ namespace CourseWork_OOP
                     var basket = JsonSerializer.Deserialize<VehiclesData>(userJson);
                     if (basket != null)
                     {
-                        basket.lightcars.RemoveAll(c => c.ID == request.CarId);
-                        basket.suv.RemoveAll(c => c.ID == request.CarId);
-                        basket.sportcars.RemoveAll(c => c.ID == request.CarId);
-                        basket.pickups.RemoveAll(c => c.ID == request.CarId);
-
+                        basket.RemoveCarFromCollection(request.CarId);
                         File.WriteAllText(requesterPath, JsonSerializer.Serialize(basket, new JsonSerializerOptions { WriteIndented = true }));
                     }
                 }
@@ -179,16 +171,13 @@ namespace CourseWork_OOP
                     foreach (var file in basketFiles)
                     {
                         string user = Path.GetFileName(file).Split('_')[0];
-                        if (user == request.RequestedBy) continue; 
+                        if (user == request.RequestedBy) continue;
 
                         var userJson = File.ReadAllText(file);
                         var basket = JsonSerializer.Deserialize<VehiclesData>(userJson);
 
                         bool modified = false;
-                        foreach (var car in basket.lightcars) { if (car.ID == request.CarId) { car.ID = 222222; modified = true; } }
-                        foreach (var car in basket.suv) { if (car.ID == request.CarId) { car.ID = 222222; modified = true; } }
-                        foreach (var car in basket.sportcars) { if (car.ID == request.CarId) { car.ID = 222222; modified = true; } }
-                        foreach (var car in basket.pickups) { if (car.ID == request.CarId) { car.ID = 222222; modified = true; } }
+                        modified = basket.ModifyCarInBasket(request.CarId);
 
                         if (modified)
                         {
@@ -196,8 +185,8 @@ namespace CourseWork_OOP
                         }
                     }
                 }
-                File.WriteAllText(jsonAproveListFilePath, JsonSerializer.Serialize(approvalRequests, new JsonSerializerOptions { WriteIndented = true }));
 
+                File.WriteAllText(jsonAproveListFilePath, JsonSerializer.Serialize(approvalRequests, new JsonSerializerOptions { WriteIndented = true }));
                 LoadApprovalRequests();
             }
             catch (Exception ex)
@@ -205,6 +194,7 @@ namespace CourseWork_OOP
                 MessageBox.Show($"Error approving request: {ex.Message}");
             }
         }
+
 
         private void DeclineRequest(SellerRequest request)
         {
@@ -221,10 +211,7 @@ namespace CourseWork_OOP
 
                     if (basket != null)
                     {
-                        basket.lightcars.RemoveAll(c => c.ID == request.CarId);
-                        basket.suv.RemoveAll(c => c.ID == request.CarId);
-                        basket.sportcars.RemoveAll(c => c.ID == request.CarId);
-                        basket.pickups.RemoveAll(c => c.ID == request.CarId);
+                        basket.RemoveCarFromCollection(request.CarId);
 
                         File.WriteAllText(userBasketPath, JsonSerializer.Serialize(basket, new JsonSerializerOptions { WriteIndented = true }));
                     }
@@ -237,6 +224,7 @@ namespace CourseWork_OOP
                 MessageBox.Show($"Error while declining request: {ex.Message}");
             }
         }
+
 
 
         private void Initialize()
@@ -285,10 +273,9 @@ namespace CourseWork_OOP
 
                 if (vehicles != null)
                 {
-                    IDIES = vehicles.lightcars.Select(car => car.ID).ToList();
-                    IDIES.AddRange(vehicles.suv.Select(car => car.ID));
-                    IDIES.AddRange(vehicles.sportcars.Select(car => car.ID));
-                    IDIES.AddRange(vehicles.pickups.Select(car => car.ID));
+                    IDIES.Clear();
+
+                    IDIES.AddRange(vehicles.GetAllCarIDs());
                 }
             }
             catch (Exception ex)
@@ -296,6 +283,7 @@ namespace CourseWork_OOP
                 MessageBox.Show($"Failed to load car IDs: {ex.Message}");
             }
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {

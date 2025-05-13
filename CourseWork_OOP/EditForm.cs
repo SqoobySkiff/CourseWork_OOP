@@ -13,8 +13,8 @@ namespace CourseWork_OOP
 {
     public partial class EditForm : Form
     {
-        private string imageFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images"); 
-        private string newImagePath = null; 
+        private string imageFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images");
+        private string newImagePath = null;
         private string jsonFilePath;
         private BaseCar car;
         private VehiclesData vehicles;
@@ -103,7 +103,7 @@ namespace CourseWork_OOP
 
                 File.Copy(filePath, savePath, true);
                 pictureBox1.Image = Image.FromFile(savePath);
-                newImagePath = savePath; 
+                newImagePath = savePath;
             }
         }
 
@@ -126,7 +126,7 @@ namespace CourseWork_OOP
                 carToUpdate.Condition = car.Condition;
                 carToUpdate.Country = car.Country;
                 carToUpdate.Gear = car.Gear;
-                carToUpdate.ImagePath = car.ImagePath; 
+                carToUpdate.ImagePath = car.ImagePath;
                 return true;
             }
             return false;
@@ -170,10 +170,24 @@ namespace CourseWork_OOP
                     return;
                 }
 
-                bool updated = UpdateCarInList(vehiclesData.lightcars)
-                            || UpdateCarInList(vehiclesData.suv)
-                            || UpdateCarInList(vehiclesData.sportcars)
-                            || UpdateCarInList(vehiclesData.pickups);
+                bool updated = false;
+
+                if (car is LightCars lightCar)
+                {
+                    updated = vehiclesData.UpdateLightCar(lightCar);
+                }
+                else if (car is SUV suvCar)
+                {
+                    updated = vehiclesData.UpdateSUV(suvCar);
+                }
+                else if (car is Sportcar sportCar)
+                {
+                    updated = vehiclesData.UpdateSportcar(sportCar);
+                }
+                else if (car is Pickup pickupCar)
+                {
+                    updated = vehiclesData.UpdatePickup(pickupCar);
+                }
 
                 if (!updated)
                 {
@@ -194,5 +208,6 @@ namespace CourseWork_OOP
                 MessageBox.Show($"Error saving changes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

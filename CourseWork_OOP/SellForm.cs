@@ -197,15 +197,7 @@ namespace CourseWork_OOP
             {
                 string jsonText = File.ReadAllText(jsonFilePath);
                 vehicles = JsonSerializer.Deserialize<VehiclesData>(jsonText) ?? new VehiclesData();
-
-                if (newCar is LightCars lightCar)
-                    vehicles.lightcars.Add(lightCar);
-                else if (newCar is SUV suvCar)
-                    vehicles.suv.Add(suvCar);
-                else if (newCar is Sportcar sportCar)
-                    vehicles.sportcars.Add(sportCar);
-                else if (newCar is Pickup pickupCar)
-                    vehicles.pickups.Add(pickupCar);
+                vehicles.AddCarToCollection(newCar);
 
                 string updatedJson = JsonSerializer.Serialize(vehicles, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(jsonFilePath, updatedJson);
